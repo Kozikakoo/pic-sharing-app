@@ -1,28 +1,23 @@
 "use client";
-import {
-  EventHandler,
-  SyntheticEvent,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { EventHandler, useEffect, useRef, useState } from "react";
 import Tools from "../tools/tools";
-
-type EventMouseAndTouch = MouseEvent | TouchEvent;
-
-//export interface event extends MouseEvent, TouchEvent {}
 
 const CanvasPaint = () => {
   const canvasRef = useRef(null);
   const [color, setColor] = useState("black");
   const [drawWidth, setDrawWidth] = useState(2);
   const [isDrawing, setIsDrawing] = useState(false);
-  const [drawingActions, setDrawingActions] = useState([]);
+  const [drawingActions, setDrawingActions] = useState<
+    { path: typeof currentPath; style: typeof currentStyle }[] | []
+  >([]);
   const [currentPath, setCurrentPath] = useState<
-    [{ x: number; y: number }[] | { x: number; y: number }] | []
+    { x: number; y: number }[] | []
   >([]);
   const [context, setContext] = useState<null | CanvasRenderingContext2D>(null);
-  const [currentStyle, setCurrentStyle] = useState({
+  const [currentStyle, setCurrentStyle] = useState<{
+    color: string;
+    lineWidth: number;
+  }>({
     color: "black",
     lineWidth: 3,
   });
@@ -35,73 +30,12 @@ const CanvasPaint = () => {
         canvas.height = 400;
 
         let context = canvas.getContext("2d");
-        setContext(context);
-        reDrawPreviousData(context);
+        if (context instanceof CanvasRenderingContext2D) {
+          setContext(context);
+          reDrawPreviousData(context);
+        }
       }
     }
-
-    /* const canvas = document.getElementById("canvas-paint") as HTMLCanvasElement;
-    if (canvas) {
-      canvas.width = window.innerWidth - 60;
-      canvas.height = 400;
-
-      let context = canvas.getContext("2d");
-      if (context) {
-        context.fillStyle = "white";
-        context.fillRect(0, 0, canvas.width, canvas.height);
-
-        const start = (e: EventMouseAndTouch) => {
-          setIsDrawing(true);
-          if (context) {
-            context.beginPath();
-            if (e instanceof MouseEvent) {
-              context.moveTo(
-                e.clientX - canvas.offsetLeft,
-                e.clientY - canvas.offsetTop
-              );
-            }
-
-            e.preventDefault();
-          }
-        };
-
-        const draw = (e: EventMouseAndTouch) => {
-          if (isDrawing == true) {
-            if (e instanceof MouseEvent) {
-              context.lineTo(
-                e.clientX - canvas.offsetLeft,
-                e.clientY - canvas.offsetTop
-              );
-            } else if (e instanceof TouchEvent) {
-              context.strokeStyle = color;
-              context.lineWidth = drawWidth;
-              context.lineCap = "round";
-              context.lineJoin = "round";
-              context.stroke();
-            }
-          }
-          e.preventDefault();
-        };
-
-        const stop = (e: EventMouseAndTouch) => {
-          if (isDrawing) {
-            context.stroke();
-            context.closePath();
-            setIsDrawing(false);
-          }
-          e.preventDefault();
-        };
-
-        canvas.addEventListener("touchstart", start, false);
-        canvas.addEventListener("touchmove", draw, false);
-        canvas.addEventListener("mousedown", start, false);
-        canvas.addEventListener("mousemove", draw, false);
-
-        canvas.addEventListener("touchend", stop, false);
-        canvas.addEventListener("mouseup", stop, false);
-        canvas.addEventListener("mouseout", stop, false);
-      }
-    } */
   }, []);
 
   const start = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -129,9 +63,85 @@ const CanvasPaint = () => {
     e.preventDefault();
   };
 
+  const end = () => {
+    setIsDrawing(false);
+    context && context.closePath();
+    if (currentPath.length > 0) {
+      setDrawingActions([
+        ...drawingActions,
+        { path: currentPath, style: currentStyle },
+      ]);
+    }
+    setCurrentPath([]);
+  };
+
+  const changeColor = (color: string) => {
+    setColor(color);
+    setCurrentStyle({ ...currentStyle, color });
+  };
+
+  const changeWidth = (lineWidth: number) => {
+    setDrawWidth(lineWidth);
+    setCurrentStyle({ ...currentStyle, lineWidth });
+  };
+
+  const undoDrawing = () => {
+    if (drawingActions.length > 0) {
+      drawingActions.pop();
+      if (canvasRef.current) {
+        const canvas = canvasRef.current as HTMLCanvasElement;
+        const newContext = canvas.getContext("2d");
+        newContext?.clearRect(0, 0, canvas.width, canvas.height);
+
+        drawingActions.forEach(({ path, style }) => {
+          if (newContext) {
+            newContext.beginPath();
+            newContext.strokeStyle = style.color;
+            newContext.lineWidth = style.lineWidth;
+            newContext.moveTo(path[0].x, path[0].y);
+            path.forEach((point) => {
+              newContext.lineTo(point.x, point.y);
+            });
+            newContext.stroke();
+          }
+        });
+      }
+    }
+  };
+
+  const clearDrawing = () => {
+    setDrawingActions([]);
+    setCurrentPath([]);
+    if (canvasRef.current) {
+      const canvas = canvasRef.current as HTMLCanvasElement;
+      const newContext = canvas.getContext("2d");
+      newContext?.clearRect(0, 0, canvas.width, canvas.height);
+    }
+  };
+
+  const reDrawPreviousData = (ctx: CanvasRenderingContext2D) => {
+    drawingActions.forEach(({ path, style }) => {
+      ctx.beginPath();
+      ctx.strokeStyle = style.color;
+      ctx.lineWidth = style.lineWidth;
+      ctx.moveTo(path[0].x, path[0].y);
+      path.forEach((point) => {
+        ctx.lineTo(point.x, point.y);
+      });
+      ctx.stroke();
+    });
+  };
+
   return (
     <>
-      <canvas ref={canvasRef} id="canvas-paint"></canvas>
+      <canvas
+        ref={canvasRef}
+        id="canvas-paint"
+        onMouseDown={start}
+        onMouseMove={draw}
+        onMouseUp={end}
+        onMouseOut={end}
+      ></canvas>
       <Tools range={drawWidth} />
     </>
   );
