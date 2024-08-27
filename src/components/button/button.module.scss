@@ -1,2 +1,19 @@
+@import "../../styles/variables.scss";
+
 .button {
+  height: 30px;
+  border-radius: 25px;
+  margin: 0 10px;
+  padding: 0 24px;
+  border: none;
+}
+
+.orange {
+  background-color: $primary-color;
+  color: white;
+}
+
+.white {
+  background-color: white;
+  color: $text-color;
 }

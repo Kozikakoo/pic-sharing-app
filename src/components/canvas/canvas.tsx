@@ -1,6 +1,7 @@
 "use client";
-import { EventHandler, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Tools from "../tools/tools";
+import styles from "./canvas.module.scss";
 
 const CanvasPaint = () => {
   const canvasRef = useRef(null);
@@ -18,15 +19,15 @@ const CanvasPaint = () => {
     color: string;
     lineWidth: number;
   }>({
-    color: "black",
-    lineWidth: 3,
+    color: "#fcba03",
+    lineWidth: 1,
   });
 
   useEffect(() => {
     if (canvasRef.current) {
       const canvas = canvasRef.current as HTMLCanvasElement;
       if (canvas instanceof HTMLCanvasElement) {
-        canvas.width = window.innerWidth - 60;
+        canvas.width = 700;
         canvas.height = 400;
 
         let context = canvas.getContext("2d");
@@ -133,8 +134,11 @@ const CanvasPaint = () => {
   };
 
   return (
-    <>
+    <div>
       <canvas
+        width={700}
+        height={400}
+        className={styles.canvas}
         ref={canvasRef}
         id="canvas-paint"
         onMouseDown={start}
@@ -143,7 +147,7 @@ const CanvasPaint = () => {
         onMouseOut={end}
       ></canvas>
       <Tools range={drawWidth} />
-    </>
+    </div>
   );
 };
 

@@ -1,8 +1,10 @@
+import styles from "./search.module.scss";
+
 const Search = (): JSX.Element => {
   return (
-    <div>
-      <input />
-    </div>
+    <>
+      <input className={styles.search} />
+    </>
   );
 };
 

@@ -1,5 +1,5 @@
 import CanvasPaint from "../../components/canvas/canvas";
-import styles from "./page.module.css";
+import styles from "../page.module.scss";
 
 export default function Home() {
   return (
