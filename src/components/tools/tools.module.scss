@@ -1,6 +1,11 @@
 .colors {
   width: 20px;
   height: 20px;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid black;
+  }
 }
 
 .rowColors {
@@ -14,5 +19,11 @@
   background-color: #645a6e47;
   width: max-content;
   padding: 4px;
+  border: 1px solid #645a6e;
+}
+
+.paintButton {
+  width: 25px;
+  height: 25px;
   border: 1px solid #645a6e;
 }

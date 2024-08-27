@@ -146,7 +146,7 @@ const CanvasPaint = () => {
         onMouseUp={end}
         onMouseOut={end}
       ></canvas>
-      <Tools range={drawWidth} />
+      <Tools range={drawWidth} color={currentStyle.color} />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-export const paintColorsBrightness = ["#ffffff", "#9f9f9f", "#000000"];
+export const paintColorsBrightness = ["#ffffff", "#9f9f9f", "#000000"] as const;
 
 export const topRowColors = [
   "#FF00FF", // Ярко-розовый
@@ -13,7 +13,7 @@ export const topRowColors = [
   "#007FFF", // Сине-голубой
   "#0000FF", // Синий
   "#7F00FF", // Фиолетовый
-];
+] as const;
 
 export const middleRowColors = [
   "#FF7FFF", // Светло-розовый
@@ -28,7 +28,7 @@ export const middleRowColors = [
   "#7F9FFF", // Светло-небесно-синий
   "#7F7FFF", // Светло-синий
   "#BF7FFF", // Светло-фиолетовый
-];
+] as const;
 
 export const bottomRowColors = [
   "#7F007F", // Темно-розовый
@@ -43,4 +43,4 @@ export const bottomRowColors = [
   "#003F7F", // Темно-небесно-синий
   "#00007F", // Темно-синий
   "#3F007F", // Темно-фиолетовый
-];
+] as const;
