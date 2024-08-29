@@ -44,7 +44,7 @@ export default function PaintStylesContextProvider({
   );
 }
 
-export function useLinkArrayContext() {
+export function usePaintStylesContext() {
   const context = useContext(PaintStylesContext);
 
   if (context === null) {

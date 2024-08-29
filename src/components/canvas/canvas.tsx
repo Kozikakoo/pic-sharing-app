@@ -2,11 +2,21 @@
 import { useEffect, useRef, useState } from "react";
 import Tools from "../tools/tools";
 import styles from "./canvas.module.scss";
+import { usePaintStylesContext } from "@/context/paint-styles.context";
+import { PaintColor, PaintWidth } from "@/lib/type";
 
 const CanvasPaint = () => {
+  const {
+    paintColor,
+    setPaintColor,
+    width,
+    setWidth,
+    backgroundColor,
+    setBackgroundColor,
+  } = usePaintStylesContext();
   const canvasRef = useRef(null);
-  const [color, setColor] = useState("black");
-  const [drawWidth, setDrawWidth] = useState(2);
+  //const [color, setColor] = useState("black");
+  //const [drawWidth, setDrawWidth] = useState(2);
   const [isDrawing, setIsDrawing] = useState(false);
   const [drawingActions, setDrawingActions] = useState<
     { path: typeof currentPath; style: typeof currentStyle }[] | []
@@ -19,8 +29,8 @@ const CanvasPaint = () => {
     color: string;
     lineWidth: number;
   }>({
-    color: "#fcba03",
-    lineWidth: 1,
+    color: paintColor,
+    lineWidth: width,
   });
 
   useEffect(() => {
@@ -76,13 +86,13 @@ const CanvasPaint = () => {
     setCurrentPath([]);
   };
 
-  const changeColor = (color: string) => {
-    setColor(color);
+  const changeColor = (color: PaintColor) => {
+    setPaintColor(color);
     setCurrentStyle({ ...currentStyle, color });
   };
 
-  const changeWidth = (lineWidth: number) => {
-    setDrawWidth(lineWidth);
+  const changeWidth = (lineWidth: PaintWidth) => {
+    setWidth(lineWidth);
     setCurrentStyle({ ...currentStyle, lineWidth });
   };
 
@@ -146,7 +156,7 @@ const CanvasPaint = () => {
         onMouseUp={end}
         onMouseOut={end}
       ></canvas>
-      <Tools range={drawWidth} color={currentStyle.color} />
+      <Tools />
     </div>
   );
 };

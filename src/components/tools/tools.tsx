@@ -5,10 +5,19 @@ import {
   topRowColors,
 } from "@/lib/data";
 import styles from "./tools.module.scss";
-import { ToolsProps } from "./tools.props";
 import { useState } from "react";
+import { usePaintStylesContext } from "@/context/paint-styles.context";
+import ColorPalette from "../colorPalette/colorPalette";
 
-const Tools = ({ range, color }: ToolsProps) => {
+const Tools = () => {
+  const {
+    paintColor,
+    setPaintColor,
+    width,
+    setWidth,
+    backgroundColor,
+    setBackgroundColor,
+  } = usePaintStylesContext();
   const [isOpenColorsBlock, setIsOpenColorsBlock] = useState(false);
 
   const openAndCloseColorBlock = () => {
@@ -21,57 +30,13 @@ const Tools = ({ range, color }: ToolsProps) => {
     <div>
       <div
         className={styles.paintButton}
-        style={{ backgroundColor: color }}
+        style={{ backgroundColor: paintColor }}
         onClick={openAndCloseColorBlock}
       ></div>
-      {isOpenColorsBlock && (
-        <div className={styles.colorsBlock}>
-          <div className={styles.brightness}>
-            {paintColorsBrightness.map((color) => (
-              <div
-                key={color}
-                style={{ backgroundColor: color }}
-                className={styles.colors}
-              ></div>
-            ))}
-          </div>
-          <div>
-            <div className={styles.rowColors}>
-              {" "}
-              {topRowColors.map((color) => (
-                <div
-                  key={color}
-                  style={{ backgroundColor: color }}
-                  className={styles.colors}
-                ></div>
-              ))}
-            </div>
-            <div className={styles.rowColors}>
-              {" "}
-              {middleRowColors.map((color) => (
-                <div
-                  key={color}
-                  style={{ backgroundColor: color }}
-                  className={styles.colors}
-                ></div>
-              ))}
-            </div>
-            <div className={styles.rowColors}>
-              {" "}
-              {bottomRowColors.map((color) => (
-                <div
-                  key={color}
-                  style={{ backgroundColor: color }}
-                  className={styles.colors}
-                ></div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
+      {isOpenColorsBlock && <ColorPalette />}
       <div className={styles.paintButton}></div>
       <div>
-        <input type="range" defaultValue={range} />
+        <input type="range" />
       </div>
     </div>
   );

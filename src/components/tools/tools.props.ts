@@ -1,7 +1,4 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 export interface ToolsProps
-  extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
-  range: number;
-  color: string;
-}
+  extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {}
