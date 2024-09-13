@@ -1,3 +1,4 @@
+"use client";
 import {
   bottomRowColors,
   middleRowColors,
@@ -5,8 +6,31 @@ import {
   topRowColors,
 } from "@/lib/data";
 import styles from "./colorPalette.module.scss";
+import { PaintColor, PaintWidth } from "@/lib/type";
+import { usePaintStylesContext } from "@/context/paint-styles-context";
 
 const ColorPalette = () => {
+  const {
+    paintColor,
+    setPaintColor,
+    width,
+    setWidth,
+    backgroundColor,
+    setBackgroundColor,
+    currentStyle,
+    setCurrentStyle,
+  } = usePaintStylesContext();
+
+  const changeColor = (color: PaintColor) => {
+    setPaintColor(color);
+    setCurrentStyle({ ...currentStyle, color });
+  };
+
+  const changeWidth = (lineWidth: PaintWidth) => {
+    setWidth(lineWidth);
+    setCurrentStyle({ ...currentStyle, width });
+  };
+
   return (
     <div className={styles.colorsBlock}>
       <div className={styles.brightness}>

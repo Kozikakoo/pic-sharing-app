@@ -1,12 +1,6 @@
-import {
-  bottomRowColors,
-  middleRowColors,
-  paintColorsBrightness,
-  topRowColors,
-} from "@/lib/data";
 import styles from "./tools.module.scss";
 import { useState } from "react";
-import { usePaintStylesContext } from "@/context/paint-styles.context";
+import { usePaintStylesContext } from "@/context/paint-styles-context";
 import ColorPalette from "../colorPalette/colorPalette";
 
 const Tools = () => {

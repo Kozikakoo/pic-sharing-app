@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import Tools from "../tools/tools";
 import styles from "./canvas.module.scss";
-import { usePaintStylesContext } from "@/context/paint-styles.context";
+import { usePaintStylesContext } from "@/context/paint-styles-context";
 import { PaintColor, PaintWidth } from "@/lib/type";
 
 const CanvasPaint = () => {
@@ -13,6 +13,8 @@ const CanvasPaint = () => {
     setWidth,
     backgroundColor,
     setBackgroundColor,
+    currentStyle,
+    setCurrentStyle,
   } = usePaintStylesContext();
   const canvasRef = useRef(null);
   //const [color, setColor] = useState("black");
@@ -25,13 +27,13 @@ const CanvasPaint = () => {
     { x: number; y: number }[] | []
   >([]);
   const [context, setContext] = useState<null | CanvasRenderingContext2D>(null);
-  const [currentStyle, setCurrentStyle] = useState<{
+  /*   const [currentStyle, setCurrentStyle] = useState<{
     color: string;
     lineWidth: number;
   }>({
     color: paintColor,
     lineWidth: width,
-  });
+  }); */
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -63,7 +65,7 @@ const CanvasPaint = () => {
     if (!isDrawing) return;
     if (context) {
       context.strokeStyle = currentStyle.color;
-      context.lineWidth = currentStyle.lineWidth;
+      context.lineWidth = currentStyle.width;
       context.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
       context.stroke();
       setCurrentPath([
@@ -86,16 +88,6 @@ const CanvasPaint = () => {
     setCurrentPath([]);
   };
 
-  const changeColor = (color: PaintColor) => {
-    setPaintColor(color);
-    setCurrentStyle({ ...currentStyle, color });
-  };
-
-  const changeWidth = (lineWidth: PaintWidth) => {
-    setWidth(lineWidth);
-    setCurrentStyle({ ...currentStyle, lineWidth });
-  };
-
   const undoDrawing = () => {
     if (drawingActions.length > 0) {
       drawingActions.pop();
@@ -108,7 +100,7 @@ const CanvasPaint = () => {
           if (newContext) {
             newContext.beginPath();
             newContext.strokeStyle = style.color;
-            newContext.lineWidth = style.lineWidth;
+            newContext.lineWidth = style.width;
             newContext.moveTo(path[0].x, path[0].y);
             path.forEach((point) => {
               newContext.lineTo(point.x, point.y);
@@ -134,7 +126,7 @@ const CanvasPaint = () => {
     drawingActions.forEach(({ path, style }) => {
       ctx.beginPath();
       ctx.strokeStyle = style.color;
-      ctx.lineWidth = style.lineWidth;
+      ctx.lineWidth = style.width;
       ctx.moveTo(path[0].x, path[0].y);
       path.forEach((point) => {
         ctx.lineTo(point.x, point.y);

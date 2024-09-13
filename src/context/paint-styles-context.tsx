@@ -1,7 +1,7 @@
 // цвета, фон, размер
 "use client";
 
-import { PaintColor, PaintWidth } from "@/lib/type";
+import { ICurrentStyle, PaintColor, PaintWidth } from "@/lib/type";
 import React, { createContext, useContext, useState } from "react";
 
 type PaintStylesContextProviderProps = {
@@ -15,6 +15,8 @@ type PaintStylesContextType = {
   setWidth: React.Dispatch<React.SetStateAction<PaintWidth>>;
   backgroundColor: PaintColor;
   setBackgroundColor: React.Dispatch<React.SetStateAction<PaintColor>>;
+  currentStyle: ICurrentStyle;
+  setCurrentStyle: React.Dispatch<React.SetStateAction<ICurrentStyle>>;
 };
 
 export const PaintStylesContext = createContext<PaintStylesContextType | null>(
@@ -27,6 +29,10 @@ export default function PaintStylesContextProvider({
   const [paintColor, setPaintColor] = useState<PaintColor>("#000000");
   const [width, setWidth] = useState<PaintWidth>(2);
   const [backgroundColor, setBackgroundColor] = useState<PaintColor>("#ffffff");
+  const [currentStyle, setCurrentStyle] = useState<ICurrentStyle>({
+    color: paintColor,
+    width,
+  });
 
   return (
     <PaintStylesContext.Provider
@@ -37,6 +43,8 @@ export default function PaintStylesContextProvider({
         setWidth,
         backgroundColor,
         setBackgroundColor,
+        currentStyle,
+        setCurrentStyle,
       }}
     >
       {children}
