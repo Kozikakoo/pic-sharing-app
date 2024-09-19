@@ -11,7 +11,7 @@ export type PaintColor =
   | (typeof middleRowColors)[number]
   | (typeof bottomRowColors)[number];
 
-export type PaintWidth = "2" | "4" | "6" | "8";
+export type PaintWidth = 2 | 4 | 6 | 8;
 
 export interface ICurrentStyle {
   color: PaintColor;

@@ -27,17 +27,14 @@ const Tools = () => {
 
   const closeColorBlock = () => {
     setIsOpenColorsBlock(false);
-    if (rangeRef.current) {
-      console.log(rangeRef.current.value);
-    }
   };
 
   const changeWidth = () => {
     if (rangeRef.current) {
-      setWidth(rangeRef.current.value as PaintWidth);
+      setWidth(Number(rangeRef.current.value) as PaintWidth);
       setCurrentStyle({
         ...currentStyle,
-        width: rangeRef.current.value as PaintWidth,
+        width: Number(rangeRef.current.value) as PaintWidth,
       });
     }
   };
