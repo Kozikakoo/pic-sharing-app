@@ -8,8 +8,9 @@ import {
 import styles from "./colorPalette.module.scss";
 import { PaintColor, PaintWidth } from "@/lib/type";
 import { usePaintStylesContext } from "@/context/paint-styles-context";
+import { ColorPaletteProps } from "./colorPalette.props";
 
-const ColorPalette = () => {
+const ColorPalette = ({ isClosePalette }: ColorPaletteProps) => {
   const {
     paintColor,
     setPaintColor,
@@ -21,9 +22,10 @@ const ColorPalette = () => {
     setCurrentStyle,
   } = usePaintStylesContext();
 
-  const changeColor = (color: PaintColor) => {
+  const changeColorAndClosePalette = (color: PaintColor) => {
     setPaintColor(color);
     setCurrentStyle({ ...currentStyle, color });
+    isClosePalette();
   };
 
   const changeWidth = (lineWidth: PaintWidth) => {
@@ -36,6 +38,7 @@ const ColorPalette = () => {
       <div className={styles.brightness}>
         {paintColorsBrightness.map((color) => (
           <div
+            onClick={() => changeColorAndClosePalette(color)}
             key={color}
             style={{ backgroundColor: color }}
             className={styles.colors}
@@ -47,6 +50,7 @@ const ColorPalette = () => {
           {" "}
           {topRowColors.map((color) => (
             <div
+              onClick={() => changeColorAndClosePalette(color)}
               key={color}
               style={{ backgroundColor: color }}
               className={styles.colors}
@@ -57,6 +61,7 @@ const ColorPalette = () => {
           {" "}
           {middleRowColors.map((color) => (
             <div
+              onClick={() => changeColorAndClosePalette(color)}
               key={color}
               style={{ backgroundColor: color }}
               className={styles.colors}
@@ -67,6 +72,7 @@ const ColorPalette = () => {
           {" "}
           {bottomRowColors.map((color) => (
             <div
+              onClick={() => changeColorAndClosePalette(color)}
               key={color}
               style={{ backgroundColor: color }}
               className={styles.colors}
