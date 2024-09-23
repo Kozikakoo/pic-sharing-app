@@ -6,7 +6,7 @@ import { ToolsProps } from "./tools.props";
 import { PaintWidth } from "@/lib/type";
 import ColorButton from "../colorButton/colorButton";
 
-const Tools = () => {
+const Tools = ({ undoDrawing }: ToolsProps) => {
   const {
     paintColor,
     setPaintColor,
@@ -46,6 +46,7 @@ const Tools = () => {
         style={{ backgroundImage: `url('/eraser.svg')`, gridArea: "clear" }}
       />
       <ColorButton
+        onClick={undoDrawing}
         style={{ backgroundImage: `url('/arrow-left.svg')`, gridArea: "back" }}
       />
       <ColorButton
