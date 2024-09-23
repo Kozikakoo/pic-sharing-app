@@ -39,8 +39,8 @@ const CanvasPaint = () => {
     if (canvasRef.current) {
       const canvas = canvasRef.current as HTMLCanvasElement;
       if (canvas instanceof HTMLCanvasElement) {
-        canvas.width = 700;
-        canvas.height = 400;
+        canvas.width = 635;
+        canvas.height = 538;
 
         let context = canvas.getContext("2d");
         if (context instanceof CanvasRenderingContext2D) {
@@ -136,10 +136,10 @@ const CanvasPaint = () => {
   };
 
   return (
-    <div>
+    <div className={styles.paintBlock}>
       <canvas
-        width={700}
-        height={400}
+        width={635}
+        height={538}
         className={styles.canvas}
         ref={canvasRef}
         id="canvas-paint"

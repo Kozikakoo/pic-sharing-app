@@ -1,5 +1,9 @@
-.paintButton {
-  width: 25px;
-  height: 25px;
-  border: 1px solid #645a6e;
+.gridBlock {
+  display: grid;
+  grid-template-areas:
+    "color backgroundColor . . ."
+    "pen background clear back download";
+  height: max-content;
+  column-gap: 9px;
+  row-gap: 19px;
 }

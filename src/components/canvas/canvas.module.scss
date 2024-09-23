@@ -1,4 +1,15 @@
+@import "../../styles/variables.scss";
+
 .canvas {
   background-color: white;
-  margin: 100px;
+  border: $text-color solid 1px;
+  border-radius: 30px;
+  margin-right: 14%;
+}
+
+.paintBlock {
+  display: flex;
+  justify-content: left;
+  width: 100%;
+  margin: 85px 0;
 }

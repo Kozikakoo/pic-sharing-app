@@ -4,6 +4,7 @@ import { usePaintStylesContext } from "@/context/paint-styles-context";
 import ColorPalette from "../colorPalette/colorPalette";
 import { ToolsProps } from "./tools.props";
 import { PaintWidth } from "@/lib/type";
+import ColorButton from "../colorButton/colorButton";
 
 const Tools = () => {
   const {
@@ -40,15 +41,37 @@ const Tools = () => {
   };
 
   return (
-    <div>
-      <div
-        className={styles.paintButton}
-        style={{ backgroundColor: paintColor }}
+    <div className={styles.gridBlock}>
+      <ColorButton style={{ gridArea: "color" }} />
+      <ColorButton
+        style={{ backgroundColor: "white", gridArea: "backgroundColor" }}
+      />
+      <ColorButton
+        style={{
+          backgroundImage: `url('/pen.svg')`,
+          backgroundColor: paintColor,
+          gridArea: "pen",
+        }}
         onClick={openAndCloseColorBlock}
-      ></div>
+      />
+      <ColorButton
+        style={{ backgroundImage: `url('/back.svg')`, gridArea: "background" }}
+      />
+      <ColorButton
+        style={{ backgroundImage: `url('/eraser.svg')`, gridArea: "clear" }}
+      />
+      <ColorButton
+        style={{ backgroundImage: `url('/arrow-left.svg')`, gridArea: "back" }}
+      />
+      <ColorButton
+        style={{
+          backgroundImage: `url('/download.svg')`,
+          gridArea: "download",
+        }}
+      />
       {isOpenColorsBlock && <ColorPalette isClosePalette={closeColorBlock} />}
       <div className={styles.paintButton}></div>
-      <div>
+      {/* <div>
         <input
           defaultValue="2"
           ref={rangeRef}
@@ -58,7 +81,7 @@ const Tools = () => {
           step="2"
           onChange={changeWidth}
         />
-      </div>
+      </div> */}
     </div>
   );
 };
