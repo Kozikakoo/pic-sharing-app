@@ -1,8 +1,7 @@
 .gridBlock {
+  position: relative;
   display: grid;
-  grid-template-areas:
-    "color backgroundColor . . ."
-    "pen background clear back download";
+  grid-template-areas: "pen background clear back download";
   height: max-content;
   column-gap: 9px;
   row-gap: 19px;

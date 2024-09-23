@@ -9,6 +9,7 @@ import styles from "./colorPalette.module.scss";
 import { PaintColor, PaintWidth } from "@/lib/type";
 import { usePaintStylesContext } from "@/context/paint-styles-context";
 import { ColorPaletteProps } from "./colorPalette.props";
+import { useRef } from "react";
 
 const ColorPalette = ({ isClosePalette }: ColorPaletteProps) => {
   const {
@@ -21,6 +22,7 @@ const ColorPalette = ({ isClosePalette }: ColorPaletteProps) => {
     currentStyle,
     setCurrentStyle,
   } = usePaintStylesContext();
+  const rangeRef = useRef<HTMLInputElement>(null);
 
   const changeColorAndClosePalette = (color: PaintColor) => {
     setPaintColor(color);
@@ -28,9 +30,19 @@ const ColorPalette = ({ isClosePalette }: ColorPaletteProps) => {
     isClosePalette();
   };
 
-  const changeWidth = (lineWidth: PaintWidth) => {
+  /* const changeWidth = (lineWidth: PaintWidth) => {
     setWidth(lineWidth);
     setCurrentStyle({ ...currentStyle, width });
+  }; */
+
+  const changeWidth = () => {
+    if (rangeRef.current) {
+      setWidth(Number(rangeRef.current.value) as PaintWidth);
+      setCurrentStyle({
+        ...currentStyle,
+        width: Number(rangeRef.current.value) as PaintWidth,
+      });
+    }
   };
 
   return (
@@ -79,6 +91,18 @@ const ColorPalette = ({ isClosePalette }: ColorPaletteProps) => {
             ></div>
           ))}
         </div>
+      </div>
+
+      <div>
+        <input
+          defaultValue="2"
+          ref={rangeRef}
+          type="range"
+          min="2"
+          max="8"
+          step="2"
+          onChange={changeWidth}
+        />
       </div>
     </div>
   );

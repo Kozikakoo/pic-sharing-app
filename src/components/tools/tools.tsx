@@ -18,7 +18,6 @@ const Tools = () => {
     setBackgroundColor,
   } = usePaintStylesContext();
   const [isOpenColorsBlock, setIsOpenColorsBlock] = useState(false);
-  const rangeRef = useRef<HTMLInputElement>(null);
 
   const openAndCloseColorBlock = () => {
     if (isOpenColorsBlock) {
@@ -30,22 +29,8 @@ const Tools = () => {
     setIsOpenColorsBlock(false);
   };
 
-  const changeWidth = () => {
-    if (rangeRef.current) {
-      setWidth(Number(rangeRef.current.value) as PaintWidth);
-      setCurrentStyle({
-        ...currentStyle,
-        width: Number(rangeRef.current.value) as PaintWidth,
-      });
-    }
-  };
-
   return (
     <div className={styles.gridBlock}>
-      <ColorButton style={{ gridArea: "color" }} />
-      <ColorButton
-        style={{ backgroundColor: "white", gridArea: "backgroundColor" }}
-      />
       <ColorButton
         style={{
           backgroundImage: `url('/pen.svg')`,
@@ -71,17 +56,6 @@ const Tools = () => {
       />
       {isOpenColorsBlock && <ColorPalette isClosePalette={closeColorBlock} />}
       <div className={styles.paintButton}></div>
-      {/* <div>
-        <input
-          defaultValue="2"
-          ref={rangeRef}
-          type="range"
-          min="2"
-          max="8"
-          step="2"
-          onChange={changeWidth}
-        />
-      </div> */}
     </div>
   );
 };

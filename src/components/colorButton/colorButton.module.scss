@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .circle {
   width: 46px;
   height: 46px;
@@ -7,4 +9,10 @@
   background-size: 19px 19px;
   background-repeat: no-repeat;
   background-position: center;
+  cursor: pointer;
+  transition: all 0.1s ease-out;
+
+  &:hover {
+    border: 1px $text-color solid;
+  }
 }
