@@ -1,8 +1,7 @@
-.gridBlock {
+.flexBlock {
   position: relative;
-  display: grid;
-  grid-template-areas: "pen background clear back download";
+  display: flex;
+  flex-direction: row;
+  gap: 9px;
   height: max-content;
-  column-gap: 9px;
-  row-gap: 19px;
 }

@@ -30,29 +30,23 @@ const Tools = ({ undoDrawing }: ToolsProps) => {
   };
 
   return (
-    <div className={styles.gridBlock}>
+    <div className={styles.flexBlock}>
       <ColorButton
         style={{
           backgroundImage: `url('/pen.svg')`,
           backgroundColor: paintColor,
-          gridArea: "pen",
         }}
         onClick={openAndCloseColorBlock}
       />
-      <ColorButton
-        style={{ backgroundImage: `url('/back.svg')`, gridArea: "background" }}
-      />
-      <ColorButton
-        style={{ backgroundImage: `url('/eraser.svg')`, gridArea: "clear" }}
-      />
+      <ColorButton style={{ backgroundImage: `url('/back.svg')` }} />
+      <ColorButton style={{ backgroundImage: `url('/eraser.svg')` }} />
       <ColorButton
         onClick={undoDrawing}
-        style={{ backgroundImage: `url('/arrow-left.svg')`, gridArea: "back" }}
+        style={{ backgroundImage: `url('/arrow-left.svg')` }}
       />
       <ColorButton
         style={{
           backgroundImage: `url('/download.svg')`,
-          gridArea: "download",
         }}
       />
       {isOpenColorsBlock && <ColorPalette isClosePalette={closeColorBlock} />}
