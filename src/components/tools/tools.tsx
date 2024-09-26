@@ -6,7 +6,7 @@ import { ToolsProps } from "./tools.props";
 import { PaintWidth } from "@/lib/type";
 import ColorButton from "../colorButton/colorButton";
 
-const Tools = ({ undoDrawing }: ToolsProps) => {
+const Tools = ({ undoDrawing, clearDrawing }: ToolsProps) => {
   const {
     paintColor,
     setPaintColor,
@@ -48,6 +48,12 @@ const Tools = ({ undoDrawing }: ToolsProps) => {
         style={{
           backgroundImage: `url('/download.svg')`,
         }}
+      />
+      <ColorButton
+        style={{
+          backgroundImage: `url('/trash.svg')`,
+        }}
+        onClick={clearDrawing}
       />
       {isOpenColorsBlock && <ColorPalette isClosePalette={closeColorBlock} />}
       <div className={styles.paintButton}></div>

@@ -148,7 +148,7 @@ const CanvasPaint = () => {
         onMouseUp={end}
         onMouseOut={end}
       ></canvas>
-      <Tools undoDrawing={undoDrawing} />
+      <Tools undoDrawing={undoDrawing} clearDrawing={clearDrawing} />
     </div>
   );
 };
