@@ -135,6 +135,14 @@ const CanvasPaint = () => {
     });
   };
 
+  const changeBackgroundCanvas = (color: PaintColor) => {
+    if (canvasRef.current) {
+      const canvas = canvasRef.current as HTMLCanvasElement;
+      canvas.style.backgroundColor = color;
+      console.log(canvas.style.backgroundColor);
+    }
+  };
+
   return (
     <div className={styles.paintBlock}>
       <canvas
@@ -148,7 +156,13 @@ const CanvasPaint = () => {
         onMouseUp={end}
         onMouseOut={end}
       ></canvas>
-      <Tools undoDrawing={undoDrawing} clearDrawing={clearDrawing} />
+      <Tools
+        undoDrawing={undoDrawing}
+        clearDrawing={clearDrawing}
+        changeBackgroundCanvas={(color: PaintColor) =>
+          changeBackgroundCanvas(color)
+        }
+      />
     </div>
   );
 };

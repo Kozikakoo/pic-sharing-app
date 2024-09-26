@@ -3,10 +3,14 @@ import { useRef, useState } from "react";
 import { usePaintStylesContext } from "@/context/paint-styles-context";
 import ColorPalette from "../colorPalette/colorPalette";
 import { ToolsProps } from "./tools.props";
-import { PaintWidth } from "@/lib/type";
+import { PaintColor, PaintWidth } from "@/lib/type";
 import ColorButton from "../colorButton/colorButton";
 
-const Tools = ({ undoDrawing, clearDrawing }: ToolsProps) => {
+const Tools = ({
+  undoDrawing,
+  clearDrawing,
+  changeBackgroundCanvas,
+}: ToolsProps) => {
   const {
     paintColor,
     setPaintColor,
@@ -18,6 +22,7 @@ const Tools = ({ undoDrawing, clearDrawing }: ToolsProps) => {
     setBackgroundColor,
   } = usePaintStylesContext();
   const [isOpenColorsBlock, setIsOpenColorsBlock] = useState(false);
+  const [isOpenColorsBackground, setIsOpenColorsBackground] = useState(false);
 
   const openAndCloseColorBlock = () => {
     if (isOpenColorsBlock) {
@@ -25,8 +30,15 @@ const Tools = ({ undoDrawing, clearDrawing }: ToolsProps) => {
     } else setIsOpenColorsBlock(true);
   };
 
+  const openAndCloseColorBackground = () => {
+    if (isOpenColorsBackground) {
+      setIsOpenColorsBackground(false);
+    } else setIsOpenColorsBackground(true);
+  };
+
   const closeColorBlock = () => {
     setIsOpenColorsBlock(false);
+    setIsOpenColorsBackground(false);
   };
 
   return (
@@ -38,7 +50,10 @@ const Tools = ({ undoDrawing, clearDrawing }: ToolsProps) => {
         }}
         onClick={openAndCloseColorBlock}
       />
-      <ColorButton style={{ backgroundImage: `url('/back.svg')` }} />
+      <ColorButton
+        style={{ backgroundImage: `url('/back.svg')` }}
+        onClick={openAndCloseColorBackground}
+      />
       <ColorButton style={{ backgroundImage: `url('/eraser.svg')` }} />
       <ColorButton
         onClick={undoDrawing}
@@ -55,7 +70,15 @@ const Tools = ({ undoDrawing, clearDrawing }: ToolsProps) => {
         }}
         onClick={clearDrawing}
       />
-      {isOpenColorsBlock && <ColorPalette isClosePalette={closeColorBlock} />}
+      {(isOpenColorsBlock || isOpenColorsBackground) && (
+        <ColorPalette
+          isClosePalette={closeColorBlock}
+          isOpenColorsBlock={isOpenColorsBlock}
+          changeBackgroundCanvas={(color: PaintColor) =>
+            changeBackgroundCanvas(color)
+          }
+        />
+      )}
       <div className={styles.paintButton}></div>
     </div>
   );

@@ -11,7 +11,11 @@ import { usePaintStylesContext } from "@/context/paint-styles-context";
 import { ColorPaletteProps } from "./colorPalette.props";
 import { useRef } from "react";
 
-const ColorPalette = ({ isClosePalette }: ColorPaletteProps) => {
+const ColorPalette = ({
+  isClosePalette,
+  isOpenColorsBlock,
+  changeBackgroundCanvas,
+}: ColorPaletteProps) => {
   const {
     paintColor,
     setPaintColor,
@@ -25,8 +29,13 @@ const ColorPalette = ({ isClosePalette }: ColorPaletteProps) => {
   const rangeRef = useRef<HTMLInputElement>(null);
 
   const changeColorAndClosePalette = (color: PaintColor) => {
-    setPaintColor(color);
-    setCurrentStyle({ ...currentStyle, color });
+    if (isOpenColorsBlock) {
+      setPaintColor(color);
+      setCurrentStyle({ ...currentStyle, color });
+    } else {
+      setBackgroundColor(color);
+      changeBackgroundCanvas(color);
+    }
     isClosePalette();
   };
 
@@ -92,18 +101,19 @@ const ColorPalette = ({ isClosePalette }: ColorPaletteProps) => {
           ))}
         </div>
       </div>
-
-      <div>
-        <input
-          defaultValue="2"
-          ref={rangeRef}
-          type="range"
-          min="2"
-          max="8"
-          step="2"
-          onChange={changeWidth}
-        />
-      </div>
+      {isOpenColorsBlock && (
+        <div>
+          <input
+            defaultValue="2"
+            ref={rangeRef}
+            type="range"
+            min="2"
+            max="8"
+            step="2"
+            onChange={changeWidth}
+          />
+        </div>
+      )}
     </div>
   );
 };
