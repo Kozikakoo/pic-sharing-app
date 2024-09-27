@@ -1,8 +1,12 @@
 import { ColorButtonProps } from "./colorButton.props";
 import styles from "./colorButton.module.scss";
 
-const ColorButton = ({ ...props }) => {
-  return <button className={styles.circle} {...props}></button>;
+const ColorButton = ({ children, ...props }: ColorButtonProps) => {
+  return (
+    <button className={styles.circle} {...props}>
+      {children}
+    </button>
+  );
 };
 
 export default ColorButton;

@@ -1,3 +1,4 @@
+"use client";
 import styles from "./tools.module.scss";
 import { useRef, useState } from "react";
 import { usePaintStylesContext } from "@/context/paint-styles-context";
@@ -5,6 +6,12 @@ import ColorPalette from "../colorPalette/colorPalette";
 import { ToolsProps } from "./tools.props";
 import { PaintColor, PaintWidth } from "@/lib/type";
 import ColorButton from "../colorButton/colorButton";
+import Pen from "../../assets/pen.svg";
+import Trash from "../../assets/trash.svg";
+import Back from "../../assets/back.svg";
+import ArrowLeft from "../../assets/arrow-left.svg";
+import Download from "../../assets/download.svg";
+import Eraser from "../../assets/eraser.svg";
 
 const Tools = ({
   undoDrawing,
@@ -45,31 +52,32 @@ const Tools = ({
     <div className={styles.flexBlock}>
       <ColorButton
         style={{
-          backgroundImage: `url('/pen.svg')`,
           backgroundColor: paintColor,
         }}
         onClick={openAndCloseColorBlock}
-      />
+      >
+        <Pen />
+      </ColorButton>
       <ColorButton
-        style={{ backgroundImage: `url('/back.svg')` }}
         onClick={openAndCloseColorBackground}
-      />
-      <ColorButton style={{ backgroundImage: `url('/eraser.svg')` }} />
-      <ColorButton
-        onClick={undoDrawing}
-        style={{ backgroundImage: `url('/arrow-left.svg')` }}
-      />
-      <ColorButton
         style={{
-          backgroundImage: `url('/download.svg')`,
+          backgroundColor: backgroundColor,
         }}
-      />
-      <ColorButton
-        style={{
-          backgroundImage: `url('/trash.svg')`,
-        }}
-        onClick={clearDrawing}
-      />
+      >
+        <Back />
+      </ColorButton>
+      <ColorButton>
+        <Eraser />
+      </ColorButton>
+      <ColorButton onClick={undoDrawing}>
+        <ArrowLeft />
+      </ColorButton>
+      <ColorButton>
+        <Download />
+      </ColorButton>
+      <ColorButton onClick={clearDrawing}>
+        <Trash />
+      </ColorButton>
       {(isOpenColorsBlock || isOpenColorsBackground) && (
         <ColorPalette
           isClosePalette={closeColorBlock}

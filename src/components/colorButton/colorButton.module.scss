@@ -12,6 +12,10 @@
   cursor: pointer;
   transition: all 0.1s ease-out;
 
+  svg {
+    width: 23px;
+    height: 23px;
+  }
   &:hover {
     border: 1px $text-color solid;
   }
