@@ -1,6 +1,6 @@
 "use client";
 import styles from "./tools.module.scss";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { usePaintStylesContext } from "@/context/paint-styles-context";
 import ColorPalette from "../colorPalette/colorPalette";
 import { ToolsProps } from "./tools.props";
@@ -29,24 +29,12 @@ const Tools = ({
     backgroundColor,
     setBackgroundColor,
   } = usePaintStylesContext();
-  const [isOpenColorsBlock, setIsOpenColorsBlock] = useState(false);
-  const [isOpenColorsBackground, setIsOpenColorsBackground] = useState(false);
+  const [activePalette, setActivePalette] = useState<
+    "paint" | "background" | null
+  >(null);
 
-  const openAndCloseColorBlock = () => {
-    if (isOpenColorsBlock) {
-      setIsOpenColorsBlock(false);
-    } else setIsOpenColorsBlock(true);
-  };
-
-  const openAndCloseColorBackground = () => {
-    if (isOpenColorsBackground) {
-      setIsOpenColorsBackground(false);
-    } else setIsOpenColorsBackground(true);
-  };
-
-  const closeColorBlock = () => {
-    setIsOpenColorsBlock(false);
-    setIsOpenColorsBackground(false);
+  const togglePalette = (type: "paint" | "background") => {
+    setActivePalette((prev) => (prev === type ? null : type));
   };
 
   return (
@@ -55,12 +43,12 @@ const Tools = ({
         style={{
           backgroundColor: paintColor,
         }}
-        onClick={openAndCloseColorBlock}
+        onClick={() => togglePalette("paint")}
       >
         <Pen fill={darkColors.includes(paintColor) ? "white" : "black"} />
       </ColorButton>
       <ColorButton
-        onClick={openAndCloseColorBackground}
+        onClick={() => togglePalette("background")}
         style={{
           backgroundColor: backgroundColor,
         }}
@@ -79,10 +67,10 @@ const Tools = ({
       <ColorButton onClick={clearDrawing}>
         <Trash />
       </ColorButton>
-      {(isOpenColorsBlock || isOpenColorsBackground) && (
+      {activePalette && (
         <ColorPalette
-          isClosePalette={closeColorBlock}
-          isOpenColorsBlock={isOpenColorsBlock}
+          isClosePalette={() => setActivePalette(null)}
+          isOpenColorsBlock={activePalette === "paint"}
           changeBackgroundCanvas={(color: PaintColor) =>
             changeBackgroundCanvas(color)
           }
