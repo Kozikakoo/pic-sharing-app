@@ -44,3 +44,5 @@ export const bottomRowColors = [
   "#00007F", // Темно-синий
   "#3F007F", // Темно-фиолетовый
 ] as const;
+
+export const darkColors = [...bottomRowColors, "#000000"];

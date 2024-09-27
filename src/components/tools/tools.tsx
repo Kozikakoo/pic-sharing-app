@@ -12,6 +12,7 @@ import Back from "../../assets/back.svg";
 import ArrowLeft from "../../assets/arrow-left.svg";
 import Download from "../../assets/download.svg";
 import Eraser from "../../assets/eraser.svg";
+import { darkColors } from "@/lib/data";
 
 const Tools = ({
   undoDrawing,
@@ -56,7 +57,7 @@ const Tools = ({
         }}
         onClick={openAndCloseColorBlock}
       >
-        <Pen />
+        <Pen fill={darkColors.includes(paintColor) ? "white" : "black"} />
       </ColorButton>
       <ColorButton
         onClick={openAndCloseColorBackground}
@@ -64,7 +65,7 @@ const Tools = ({
           backgroundColor: backgroundColor,
         }}
       >
-        <Back />
+        <Back fill={darkColors.includes(backgroundColor) ? "white" : "black"} />
       </ColorButton>
       <ColorButton>
         <Eraser />
