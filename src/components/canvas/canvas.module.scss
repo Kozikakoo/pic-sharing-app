@@ -5,6 +5,7 @@
   border: $text-color solid 1px;
   border-radius: 30px;
   margin-right: 14%;
+  cursor: none;
 }
 
 .paintBlock {
@@ -23,4 +24,12 @@
 .saveButton {
   width: 180px;
   margin: 0;
+}
+
+.cursor {
+  position: absolute;
+  border-radius: 50%;
+  //transition: width 0.3s, height 0.3s;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
 }

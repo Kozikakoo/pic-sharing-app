@@ -52,6 +52,20 @@ const CanvasPaint = () => {
     }
   }, []);
 
+  useEffect(() => {
+    let cursor = document.getElementById("cursor");
+
+    document.addEventListener("mousemove", (e) => {
+      if (cursor) {
+        cursor.style.left = `${e.pageX - width / 2}px`; // Центрируем круг по ширине
+        cursor.style.top = `${e.pageY - width / 2}px`; // Центрируем круг по высоте
+        cursor.style.width = `${width}px`; // Устанавливаем ширину круга в зависимости от выбора пользователя
+        cursor.style.height = `${width}px`; // Устанавливаем высоту круга в зависимости от выбора пользователя
+        cursor.style.backgroundColor = paintColor;
+      }
+    });
+  }, [width, paintColor]);
+
   const start = (e: React.MouseEvent<HTMLCanvasElement>) => {
     if (context) {
       context.beginPath();
@@ -146,6 +160,7 @@ const CanvasPaint = () => {
 
   return (
     <div className={styles.paintBlock}>
+      <div id="cursor" className={styles.cursor}></div>
       <canvas
         width={635}
         height={538}
