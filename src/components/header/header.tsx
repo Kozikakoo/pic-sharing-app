@@ -8,7 +8,7 @@ const Header = () => {
     <header className={styles.header}>
       <Logo />
       <Search />
-      <div>
+      <div className={styles.buttonBlock}>
         <Button color="white" text="Войти" />
         <Button color="orange" text="Регистрация" />
       </div>

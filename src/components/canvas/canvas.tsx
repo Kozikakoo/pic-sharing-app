@@ -4,6 +4,7 @@ import Tools from "../tools/tools";
 import styles from "./canvas.module.scss";
 import { usePaintStylesContext } from "@/context/paint-styles-context";
 import { PaintColor, PaintWidth } from "@/lib/type";
+import Button from "../button/button";
 
 const CanvasPaint = () => {
   const {
@@ -156,13 +157,16 @@ const CanvasPaint = () => {
         onMouseUp={end}
         onMouseOut={end}
       ></canvas>
-      <Tools
-        undoDrawing={undoDrawing}
-        clearDrawing={clearDrawing}
-        changeBackgroundCanvas={(color: PaintColor) =>
-          changeBackgroundCanvas(color)
-        }
-      />
+      <div className={styles.toolsWithButton}>
+        <Tools
+          undoDrawing={undoDrawing}
+          clearDrawing={clearDrawing}
+          changeBackgroundCanvas={(color: PaintColor) =>
+            changeBackgroundCanvas(color)
+          }
+        />
+        <Button color="orange" text="Сохранить" className={styles.saveButton} />
+      </div>
     </div>
   );
 };

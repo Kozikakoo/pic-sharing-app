@@ -13,3 +13,14 @@
   width: 100%;
   margin: 85px 0;
 }
+
+.toolsWithButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.saveButton {
+  width: 180px;
+  margin: 0;
+}
