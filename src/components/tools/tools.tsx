@@ -1,6 +1,6 @@
 "use client";
 import styles from "./tools.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePaintStylesContext } from "@/context/paint-styles-context";
 import ColorPalette from "../colorPalette/colorPalette";
 import { ToolsProps } from "./tools.props";
@@ -32,17 +32,31 @@ const Tools = ({
   const [activePalette, setActivePalette] = useState<
     "paint" | "background" | null
   >(null);
+  const [activeEraser, setActiveEraser] = useState(false);
+  const [lastColor, setLastColor] = useState<PaintColor>("#000000");
 
   const togglePalette = (type: "paint" | "background") => {
     setActivePalette((prev) => (prev === type ? null : type));
   };
 
+  const onClickEraser = () => {
+    setLastColor(paintColor);
+    setPaintColor(backgroundColor);
+    setCurrentStyle({ ...currentStyle, color: backgroundColor });
+    setWidth(8);
+    setActiveEraser(true);
+  };
+
   return (
     <div className={styles.flexBlock}>
       <ColorButton
-        style={{
-          backgroundColor: paintColor,
-        }}
+        style={
+          activeEraser
+            ? {
+                backgroundColor: lastColor,
+              }
+            : { backgroundColor: paintColor }
+        }
         onClick={() => togglePalette("paint")}
       >
         <Pen fill={darkColors.includes(paintColor) ? "white" : "black"} />
@@ -56,7 +70,7 @@ const Tools = ({
         <Back fill={darkColors.includes(backgroundColor) ? "white" : "black"} />
       </ColorButton>
       <ColorButton>
-        <Eraser />
+        <Eraser onClick={onClickEraser} />
       </ColorButton>
       <ColorButton onClick={undoDrawing}>
         <ArrowLeft />

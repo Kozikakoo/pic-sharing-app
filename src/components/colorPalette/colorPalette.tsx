@@ -9,7 +9,7 @@ import styles from "./colorPalette.module.scss";
 import { PaintColor, PaintWidth } from "@/lib/type";
 import { usePaintStylesContext } from "@/context/paint-styles-context";
 import { ColorPaletteProps } from "./colorPalette.props";
-import { useRef } from "react";
+import RangeWidth from "../rangeWidth/rangeWidth";
 
 const ColorPalette = ({
   isClosePalette,
@@ -26,7 +26,6 @@ const ColorPalette = ({
     currentStyle,
     setCurrentStyle,
   } = usePaintStylesContext();
-  const rangeRef = useRef<HTMLInputElement>(null);
 
   const changeColorAndClosePalette = (color: PaintColor) => {
     if (isOpenColorsBlock) {
@@ -43,16 +42,6 @@ const ColorPalette = ({
     setWidth(lineWidth);
     setCurrentStyle({ ...currentStyle, width });
   }; */
-
-  const changeWidth = () => {
-    if (rangeRef.current) {
-      setWidth(Number(rangeRef.current.value) as PaintWidth);
-      setCurrentStyle({
-        ...currentStyle,
-        width: Number(rangeRef.current.value) as PaintWidth,
-      });
-    }
-  };
 
   return (
     <div className={styles.colorsBlock}>
@@ -101,19 +90,7 @@ const ColorPalette = ({
           ))}
         </div>
       </div>
-      {isOpenColorsBlock && (
-        <div>
-          <input
-            defaultValue="2"
-            ref={rangeRef}
-            type="range"
-            min="2"
-            max="8"
-            step="2"
-            onChange={changeWidth}
-          />
-        </div>
-      )}
+      {isOpenColorsBlock && <RangeWidth />}
     </div>
   );
 };
