@@ -17,9 +17,8 @@ const CanvasPaint = () => {
     currentStyle,
     setCurrentStyle,
   } = usePaintStylesContext();
-  const canvasRef = useRef(null);
-  //const [color, setColor] = useState("black");
-  //const [drawWidth, setDrawWidth] = useState(2);
+
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [drawingActions, setDrawingActions] = useState<
     { path: typeof currentPath; style: typeof currentStyle }[] | []
@@ -28,13 +27,6 @@ const CanvasPaint = () => {
     { x: number; y: number }[] | []
   >([]);
   const [context, setContext] = useState<null | CanvasRenderingContext2D>(null);
-  /*   const [currentStyle, setCurrentStyle] = useState<{
-    color: string;
-    lineWidth: number;
-  }>({
-    color: paintColor,
-    lineWidth: width,
-  }); */
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -54,16 +46,18 @@ const CanvasPaint = () => {
 
   useEffect(() => {
     let cursor = document.getElementById("cursor");
+    if (!cursor) return;
 
-    document.addEventListener("mousemove", (e) => {
-      if (cursor) {
-        cursor.style.left = `${e.pageX - width / 2}px`; // Центрируем круг по ширине
-        cursor.style.top = `${e.pageY - width / 2}px`; // Центрируем круг по высоте
-        cursor.style.width = `${width}px`; // Устанавливаем ширину круга в зависимости от выбора пользователя
-        cursor.style.height = `${width}px`; // Устанавливаем высоту круга в зависимости от выбора пользователя
-        cursor.style.backgroundColor = paintColor;
-      }
-    });
+    const updateCursor = (e: MouseEvent) => {
+      cursor.style.left = `${e.pageX - width / 2}px`; // Центрируем круг по ширине
+      cursor.style.top = `${e.pageY - width / 2}px`; // Центрируем круг по высоте
+      cursor.style.width = `${width}px`; // Устанавливаем ширину круга в зависимости от выбора пользователя
+      cursor.style.height = `${width}px`; // Устанавливаем высоту круга в зависимости от выбора пользователя
+      cursor.style.backgroundColor = paintColor;
+    };
+
+    document.addEventListener("mousemove", updateCursor);
+    return () => document.removeEventListener("mousemove", updateCursor);
   }, [width, paintColor]);
 
   const start = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -72,28 +66,28 @@ const CanvasPaint = () => {
       context.moveTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
       setIsDrawing(true);
 
-      e.preventDefault();
+      //e.preventDefault();
     }
   };
 
   const draw = (e: React.MouseEvent<HTMLCanvasElement>) => {
-    if (!isDrawing) return;
-    if (context) {
-      context.strokeStyle = currentStyle.color;
-      context.lineWidth = currentStyle.width;
-      context.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
-      context.stroke();
-      setCurrentPath([
-        ...currentPath,
-        { x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY },
-      ]);
-    }
-    e.preventDefault();
+    if (!isDrawing || !context) return;
+    context.strokeStyle = currentStyle.color;
+    context.lineWidth = currentStyle.width;
+    context.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+    context.stroke();
+    setCurrentPath([
+      ...currentPath,
+      { x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY },
+    ]);
+
+    //e.preventDefault();
   };
 
   const end = () => {
+    if (!isDrawing) return;
     setIsDrawing(false);
-    context && context.closePath();
+    context?.closePath();
     if (currentPath.length > 0) {
       setDrawingActions([
         ...drawingActions,
@@ -106,55 +100,47 @@ const CanvasPaint = () => {
   const undoDrawing = () => {
     if (drawingActions.length > 0) {
       drawingActions.pop();
-      if (canvasRef.current) {
-        const canvas = canvasRef.current as HTMLCanvasElement;
-        const newContext = canvas.getContext("2d");
-        newContext?.clearRect(0, 0, canvas.width, canvas.height);
-
-        drawingActions.forEach(({ path, style }) => {
-          if (newContext) {
-            newContext.beginPath();
-            newContext.strokeStyle = style.color;
-            newContext.lineWidth = style.width;
-            newContext.moveTo(path[0].x, path[0].y);
-            path.forEach((point) => {
-              newContext.lineTo(point.x, point.y);
-            });
-            newContext.stroke();
-          }
-        });
-      }
+      clearCanvas();
+      drawingActions.forEach(({ path, style }) => drawPath(path, style));
     }
   };
 
   const clearDrawing = () => {
     setDrawingActions([]);
     setCurrentPath([]);
-    if (canvasRef.current) {
-      const canvas = canvasRef.current as HTMLCanvasElement;
+    clearCanvas();
+  };
+
+  const clearCanvas = () => {
+    const canvas = canvasRef.current as HTMLCanvasElement;
+    if (canvas) {
       const newContext = canvas.getContext("2d");
       newContext?.clearRect(0, 0, canvas.width, canvas.height);
     }
   };
 
   const reDrawPreviousData = (ctx: CanvasRenderingContext2D) => {
-    drawingActions.forEach(({ path, style }) => {
-      ctx.beginPath();
-      ctx.strokeStyle = style.color;
-      ctx.lineWidth = style.width;
-      ctx.moveTo(path[0].x, path[0].y);
-      path.forEach((point) => {
-        ctx.lineTo(point.x, point.y);
-      });
-      ctx.stroke();
-    });
+    drawingActions.forEach(({ path, style }) => drawPath(path, style, ctx));
+  };
+
+  const drawPath = (
+    path: { x: number; y: number }[],
+    style: { color: PaintColor; width: PaintWidth },
+    ctx = context
+  ) => {
+    if (!ctx || path.length === 0) return;
+    ctx.beginPath();
+    ctx.strokeStyle = style.color;
+    ctx.lineWidth = style.width;
+    ctx.moveTo(path[0].x, path[0].y);
+    path.forEach((point) => ctx.lineTo(point.x, point.y));
+    ctx.stroke();
   };
 
   const changeBackgroundCanvas = (color: PaintColor) => {
-    if (canvasRef.current) {
-      const canvas = canvasRef.current as HTMLCanvasElement;
+    const canvas = canvasRef.current as HTMLCanvasElement;
+    if (canvas) {
       canvas.style.backgroundColor = color;
-      console.log(canvas.style.backgroundColor);
     }
   };
 
