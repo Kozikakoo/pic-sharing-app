@@ -1,12 +1,17 @@
 import { ColorButtonProps } from "./colorButton.props";
 import styles from "./colorButton.module.scss";
+import { forwardRef } from "react";
 
-const ColorButton = ({ children, ...props }: ColorButtonProps) => {
-  return (
-    <button className={styles.circle} {...props}>
-      {children}
-    </button>
-  );
-};
+const ColorButton = forwardRef<HTMLButtonElement, ColorButtonProps>(
+  ({ children, ...props }, ref) => {
+    return (
+      <button ref={ref} className={styles.circle} {...props}>
+        {children}
+      </button>
+    );
+  }
+);
+
+ColorButton.displayName = "ColorButton";
 
 export default ColorButton;
