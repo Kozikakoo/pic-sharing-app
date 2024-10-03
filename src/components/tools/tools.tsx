@@ -18,6 +18,7 @@ const Tools = ({
   undoDrawing,
   clearDrawing,
   changeBackgroundCanvas,
+  downloadCanvasImg,
 }: ToolsProps) => {
   const {
     paintColor,
@@ -118,7 +119,7 @@ const Tools = ({
       <ColorButton onClick={undoDrawing}>
         <ArrowLeft />
       </ColorButton>
-      <ColorButton>
+      <ColorButton onClick={downloadCanvasImg}>
         <Download />
       </ColorButton>
       <ColorButton onClick={clearDrawing}>

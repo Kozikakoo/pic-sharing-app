@@ -6,4 +6,5 @@ export interface ToolsProps
   undoDrawing: () => void;
   clearDrawing: () => void;
   changeBackgroundCanvas: (color: PaintColor) => void;
+  downloadCanvasImg: () => void;
 }

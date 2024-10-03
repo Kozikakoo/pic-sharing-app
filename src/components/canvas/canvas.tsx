@@ -39,6 +39,7 @@ const CanvasPaint = () => {
         if (context instanceof CanvasRenderingContext2D) {
           setContext(context);
           reDrawPreviousData(context);
+          drawBackground(context, backgroundColor);
         }
       }
     }
@@ -59,6 +60,11 @@ const CanvasPaint = () => {
     document.addEventListener("mousemove", updateCursor);
     return () => document.removeEventListener("mousemove", updateCursor);
   }, [width, paintColor]);
+
+  const drawBackground = (ctx: CanvasRenderingContext2D, color: PaintColor) => {
+    ctx.fillStyle = color; // Установите нужный цвет фона
+    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height); // Заливка всего холста
+  };
 
   const start = (e: React.MouseEvent<HTMLCanvasElement>) => {
     if (context) {
@@ -144,6 +150,20 @@ const CanvasPaint = () => {
     }
   };
 
+  const downloadCanvasImg = () => {
+    const canvas = canvasRef.current;
+    if (canvas) {
+      // Преобразуем содержимое canvas в URL изображения
+      const image = canvas.toDataURL("image/png");
+
+      // Создаём временную ссылку
+      const link = document.createElement("a");
+      link.href = image;
+      link.download = "canvas-image.png"; // Имя файла, которое будет предложено при загрузке
+      link.click();
+    }
+  };
+
   return (
     <div className={styles.paintBlock}>
       <div id="cursor" className={styles.cursor}></div>
@@ -165,6 +185,7 @@ const CanvasPaint = () => {
           changeBackgroundCanvas={(color: PaintColor) =>
             changeBackgroundCanvas(color)
           }
+          downloadCanvasImg={downloadCanvasImg}
         />
         <Button color="orange" text="Сохранить" className={styles.saveButton} />
       </div>
