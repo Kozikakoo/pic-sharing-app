@@ -1,7 +1,22 @@
 .search {
-  width: 40%;
+  width: 100%;
   border-radius: 25px;
   border: none;
   height: 30px;
-  justify-self: center;
+  padding: 0 44px 0 10px;
+}
+
+.glass {
+  width: 34px;
+  height: 30px;
+  position: absolute;
+  right: 0;
+  opacity: 0.5;
+  padding: 6px 7px;
+  border-left: 1px solid grey;
+}
+
+.containerSearch {
+  position: relative;
+  width: 40%;
 }
