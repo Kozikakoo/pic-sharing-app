@@ -28,39 +28,6 @@ const CanvasPaint = () => {
   >([]);
   const [context, setContext] = useState<null | CanvasRenderingContext2D>(null);
 
-  useEffect(() => {
-    if (canvasRef.current) {
-      const canvas = canvasRef.current as HTMLCanvasElement;
-      if (canvas instanceof HTMLCanvasElement) {
-        canvas.width = 635;
-        canvas.height = 538;
-
-        let context = canvas.getContext("2d");
-        if (context instanceof CanvasRenderingContext2D) {
-          setContext(context);
-          reDrawPreviousData(context);
-          drawBackground(context, backgroundColor);
-        }
-      }
-    }
-  }, []);
-
-  useEffect(() => {
-    let cursor = document.getElementById("cursor");
-    if (!cursor) return;
-
-    const updateCursor = (e: MouseEvent) => {
-      cursor.style.left = `${e.pageX - width / 2}px`; // Центрируем круг по ширине
-      cursor.style.top = `${e.pageY - width / 2}px`; // Центрируем круг по высоте
-      cursor.style.width = `${width}px`; // Устанавливаем ширину круга в зависимости от выбора пользователя
-      cursor.style.height = `${width}px`; // Устанавливаем высоту круга в зависимости от выбора пользователя
-      cursor.style.backgroundColor = paintColor;
-    };
-
-    document.addEventListener("mousemove", updateCursor);
-    return () => document.removeEventListener("mousemove", updateCursor);
-  }, [width, paintColor]);
-
   const drawBackground = (ctx: CanvasRenderingContext2D, color: PaintColor) => {
     ctx.fillStyle = color; // Установите нужный цвет фона
     ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height); // Заливка всего холста
@@ -163,6 +130,39 @@ const CanvasPaint = () => {
       link.click();
     }
   };
+
+  useEffect(() => {
+    if (canvasRef.current) {
+      const canvas = canvasRef.current as HTMLCanvasElement;
+      if (canvas instanceof HTMLCanvasElement) {
+        canvas.width = 635;
+        canvas.height = 538;
+
+        let context = canvas.getContext("2d");
+        if (context instanceof CanvasRenderingContext2D) {
+          setContext(context);
+          reDrawPreviousData(context);
+          drawBackground(context, backgroundColor);
+        }
+      }
+    }
+  }, [backgroundColor]);
+
+  useEffect(() => {
+    let cursor = document.getElementById("cursor");
+    if (!cursor) return;
+
+    const updateCursor = (e: MouseEvent) => {
+      cursor.style.left = `${e.pageX - width / 2}px`; // Центрируем круг по ширине
+      cursor.style.top = `${e.pageY - width / 2}px`; // Центрируем круг по высоте
+      cursor.style.width = `${width}px`; // Устанавливаем ширину круга в зависимости от выбора пользователя
+      cursor.style.height = `${width}px`; // Устанавливаем высоту круга в зависимости от выбора пользователя
+      cursor.style.backgroundColor = paintColor;
+    };
+
+    document.addEventListener("mousemove", updateCursor);
+    return () => document.removeEventListener("mousemove", updateCursor);
+  }, [width, paintColor]);
 
   return (
     <div className={styles.paintBlock}>

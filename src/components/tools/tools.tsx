@@ -129,9 +129,9 @@ const Tools = ({
         <ColorPalette
           isClosePalette={() => setActivePalette(null)}
           isOpenColorsBlock={activePalette === "pen"}
-          changeBackgroundCanvas={(color: PaintColor) =>
-            changeBackgroundCanvas(color)
-          }
+          changeBackgroundCanvas={(color: PaintColor) => {
+            changeBackgroundCanvas(color);
+          }}
         />
       )}
       <div className={styles.paintButton}></div>
