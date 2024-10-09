@@ -5,6 +5,7 @@ import styles from "./canvas.module.scss";
 import { usePaintStylesContext } from "@/context/paint-styles-context";
 import { PaintColor, PaintWidth } from "@/lib/type";
 import Button from "../button/button";
+import { useActiveComponentContext } from "@/context/active-component-context";
 
 const CanvasPaint = () => {
   const {
@@ -17,7 +18,7 @@ const CanvasPaint = () => {
     currentStyle,
     setCurrentStyle,
   } = usePaintStylesContext();
-
+  const { setActivePalette } = useActiveComponentContext();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [drawingActions, setDrawingActions] = useState<
@@ -38,6 +39,7 @@ const CanvasPaint = () => {
       context.beginPath();
       context.moveTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
       setIsDrawing(true);
+      setActivePalette(null);
 
       //e.preventDefault();
     }

@@ -13,6 +13,10 @@ export type PaintColor =
 
 export type PaintWidth = 2 | 4 | 6 | 8;
 
+export type ActivePalette = "pen" | "background" | null;
+
+export type ActiveColorButton = "pen" | "background" | "eraser";
+
 export interface ICurrentStyle {
   color: PaintColor;
   width: PaintWidth;

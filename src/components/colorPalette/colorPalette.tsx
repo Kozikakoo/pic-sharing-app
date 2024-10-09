@@ -10,6 +10,7 @@ import { PaintColor, PaintWidth } from "@/lib/type";
 import { usePaintStylesContext } from "@/context/paint-styles-context";
 import { ColorPaletteProps } from "./colorPalette.props";
 import RangeWidth from "../rangeWidth/rangeWidth";
+import { useEffect, useRef } from "react";
 
 const ColorPalette = ({
   isClosePalette,
@@ -26,6 +27,7 @@ const ColorPalette = ({
     currentStyle,
     setCurrentStyle,
   } = usePaintStylesContext();
+  const paletteRef = useRef<HTMLDivElement>(null);
 
   const changeColorAndClosePalette = (color: PaintColor) => {
     if (isOpenColorsBlock) {
@@ -38,13 +40,23 @@ const ColorPalette = ({
     isClosePalette();
   };
 
-  /* const changeWidth = (lineWidth: PaintWidth) => {
-    setWidth(lineWidth);
-    setCurrentStyle({ ...currentStyle, width });
-  }; */
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        paletteRef.current &&
+        !paletteRef.current.contains(event.target as Node)
+      ) {
+        isClosePalette(); // Закрываем палитру
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [paletteRef, isClosePalette]);
 
   return (
-    <div className={styles.colorsBlock}>
+    <div ref={paletteRef} className={styles.colorsBlock}>
       <div className={styles.brightness}>
         {paintColorsBrightness.map((color) => (
           <div

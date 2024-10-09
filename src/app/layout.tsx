@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.scss";
 import Header from "@/components/header/header";
 import PaintStylesContextProvider from "@/context/paint-styles-context";
+import ActiveComponentContextProvider from "@/context/active-component-context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,11 +20,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <PaintStylesContextProvider>
-        {" "}
-        <body className={inter.className}>
-          <Header />
-          {children}
-        </body>
+        <ActiveComponentContextProvider>
+          <body className={inter.className}>
+            <Header />
+            {children}
+          </body>
+        </ActiveComponentContextProvider>{" "}
       </PaintStylesContextProvider>
     </html>
   );

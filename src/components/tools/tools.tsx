@@ -13,6 +13,7 @@ import ArrowLeft from "../../assets/arrow-left.svg";
 import Download from "../../assets/download.svg";
 import Eraser from "../../assets/eraser.svg";
 import { darkColors } from "@/lib/data";
+import { useActiveComponentContext } from "@/context/active-component-context";
 
 const Tools = ({
   undoDrawing,
@@ -30,12 +31,12 @@ const Tools = ({
     backgroundColor,
     setBackgroundColor,
   } = usePaintStylesContext();
-  const [activePalette, setActivePalette] = useState<
-    "pen" | "background" | null
-  >(null);
-  const [activeColorButton, setActiveColorButton] = useState<
-    "pen" | "background" | "eraser"
-  >("pen");
+  const {
+    activePalette,
+    setActivePalette,
+    activeColorButton,
+    setActiveColorButton,
+  } = useActiveComponentContext();
   const [lastColor, setLastColor] = useState<PaintColor>("#000000");
   const PenRef = useRef<HTMLButtonElement>(null);
   const EraserRef = useRef<HTMLButtonElement>(null);
