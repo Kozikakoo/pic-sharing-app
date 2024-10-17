@@ -1,4 +1,3 @@
-// цвета, фон, размер
 "use client";
 
 import { ICurrentStyle, PaintColor, PaintWidth } from "@/lib/type";

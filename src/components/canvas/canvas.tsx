@@ -172,6 +172,7 @@ const CanvasPaint = () => {
     if (isClickYes) {
       clearDrawing();
     }
+    setIsClickYes(false);
   }, [isClickYes, setIsClickYes]);
 
   return (

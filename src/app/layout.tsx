@@ -28,7 +28,7 @@ export default function RootLayout({
               {children}
             </body>
           </OpenPopupContextProvider>
-        </ActiveComponentContextProvider>{" "}
+        </ActiveComponentContextProvider>
       </PaintStylesContextProvider>
     </html>
   );
