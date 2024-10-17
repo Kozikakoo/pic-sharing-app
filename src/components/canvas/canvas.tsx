@@ -6,6 +6,7 @@ import { usePaintStylesContext } from "@/context/paint-styles-context";
 import { PaintColor, PaintWidth } from "@/lib/type";
 import Button from "../button/button";
 import { useActiveComponentContext } from "@/context/active-component-context";
+import { useOpenPopupContext } from "@/context/popup-open-context";
 
 const CanvasPaint = () => {
   const {
@@ -18,6 +19,7 @@ const CanvasPaint = () => {
     currentStyle,
     setCurrentStyle,
   } = usePaintStylesContext();
+  const { isClickYes, setIsClickYes } = useOpenPopupContext();
   const { setActivePalette } = useActiveComponentContext();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
@@ -165,6 +167,12 @@ const CanvasPaint = () => {
     document.addEventListener("mousemove", updateCursor);
     return () => document.removeEventListener("mousemove", updateCursor);
   }, [width, paintColor]);
+
+  useEffect(() => {
+    if (isClickYes) {
+      clearDrawing();
+    }
+  }, [isClickYes, setIsClickYes]);
 
   return (
     <div className={styles.paintBlock}>

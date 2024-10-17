@@ -9,6 +9,8 @@ type OpenPopupContextProviderProps = {
 type OpenPopupContextType = {
   isOpenPopup: boolean;
   setIsOpenPopup: React.Dispatch<React.SetStateAction<boolean>>;
+  isClickYes: boolean;
+  setIsClickYes: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const OpenPopupContext = createContext<OpenPopupContextType | null>(
@@ -19,11 +21,15 @@ export default function OpenPopupContextProvider({
   children,
 }: OpenPopupContextProviderProps) {
   const [isOpenPopup, setIsOpenPopup] = useState<boolean>(false);
+  const [isClickYes, setIsClickYes] = useState<boolean>(false);
+
   return (
     <OpenPopupContext.Provider
       value={{
         isOpenPopup,
         setIsOpenPopup,
+        isClickYes,
+        setIsClickYes,
       }}
     >
       {children}
