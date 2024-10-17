@@ -5,6 +5,6 @@ export interface ButtonProps
     HTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
-  color: "orange" | "white";
+  color: "orange" | "white" | "blue";
   text: string;
 }

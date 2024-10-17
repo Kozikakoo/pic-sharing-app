@@ -14,6 +14,7 @@ import Download from "../../assets/download.svg";
 import Eraser from "../../assets/eraser.svg";
 import { darkColors } from "@/lib/data";
 import { useActiveComponentContext } from "@/context/active-component-context";
+import { useOpenPopupContext } from "@/context/popup-open-context";
 
 const Tools = ({
   undoDrawing,
@@ -21,6 +22,7 @@ const Tools = ({
   changeBackgroundCanvas,
   downloadCanvasImg,
 }: ToolsProps) => {
+  const { isOpenPopup, setIsOpenPopup } = useOpenPopupContext();
   const {
     paintColor,
     setPaintColor,
@@ -123,7 +125,7 @@ const Tools = ({
       <ColorButton onClick={downloadCanvasImg}>
         <Download />
       </ColorButton>
-      <ColorButton onClick={clearDrawing}>
+      <ColorButton onClick={() => setIsOpenPopup(true)}>
         <Trash />
       </ColorButton>
       {activePalette && (

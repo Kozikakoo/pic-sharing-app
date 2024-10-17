@@ -4,6 +4,7 @@ import "./globals.scss";
 import Header from "@/components/header/header";
 import PaintStylesContextProvider from "@/context/paint-styles-context";
 import ActiveComponentContextProvider from "@/context/active-component-context";
+import OpenPopupContextProvider from "@/context/popup-open-context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,10 +22,12 @@ export default function RootLayout({
     <html lang="en">
       <PaintStylesContextProvider>
         <ActiveComponentContextProvider>
-          <body className={inter.className}>
-            <Header />
-            {children}
-          </body>
+          <OpenPopupContextProvider>
+            <body className={inter.className}>
+              <Header />
+              {children}
+            </body>
+          </OpenPopupContextProvider>
         </ActiveComponentContextProvider>{" "}
       </PaintStylesContextProvider>
     </html>

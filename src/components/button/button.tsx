@@ -8,6 +8,7 @@ const Button = ({ color, text, className }: ButtonProps): JSX.Element => {
       className={cn(className, styles.button, {
         [styles.orange]: color == "orange",
         [styles.white]: color == "white",
+        [styles.blue]: color == "blue",
       })}
     >
       {text}
