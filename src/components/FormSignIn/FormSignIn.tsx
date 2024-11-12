@@ -4,7 +4,13 @@ import styles from "./FormSignIn.module.scss";
 
 const FormSignIn = () => {
   return (
-    <Form title="Авторизация" textButton="Войти" className={styles.formSignIn}>
+    <Form
+      title="Авторизация"
+      textButton="Войти"
+      className={styles.formSignIn}
+      question="Ещё нет учетной записи?"
+      textLink="Регистрация"
+    >
       <div>
         <Input
           placeholder="example@yandex.ru"

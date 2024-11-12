@@ -8,4 +8,6 @@ export interface FormProps
   children: ReactNode;
   textButton: string;
   title: string;
+  question: string;
+  textLink: "Войти" | "Регистрация";
 }

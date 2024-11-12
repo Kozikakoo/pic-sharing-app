@@ -4,7 +4,12 @@ import styles from "./FormSignUp.module.scss";
 
 const FormSignUp = () => {
   return (
-    <Form title="Регистрация" textButton="Регистрация">
+    <Form
+      title="Регистрация"
+      textButton="Регистрация"
+      question="Уже зарегистрированы?"
+      textLink="Войти"
+    >
       <Input placeholder="Анастасия" id="name" className={styles.formInput}>
         <label htmlFor="name" className={styles.inputName}>
           Имя

@@ -20,9 +20,23 @@
   width: 60%;
   height: 3.5rem;
   transition: all 0.1s;
+  letter-spacing: 0.1rem;
 }
 .formButton:hover, .formButton:active {
   box-shadow: 7px 3px 3px rgba(0, 0, 0, 0.2);
   border: 1px solid black;
   transform: translateY(-0.1rem);
+}
+.formQuestion {
+  font-size: 1.4rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+.formLink {
+  text-decoration: underline;
+  color: #e66127;
+  transition: all 0.3s;
+}
+.formLink:hover {
+  color: #68280c;
 }/*# sourceMappingURL=form.module.css.map */

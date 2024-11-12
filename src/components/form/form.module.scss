@@ -1,3 +1,5 @@
+@import "../../styles/utils/variables";
+
 .form {
   display: flex;
   flex-direction: column;
@@ -20,12 +22,29 @@
     width: 60%;
     height: 3.5rem;
     transition: all 0.1s;
+    letter-spacing: 0.1rem;
 
     &:hover,
     &:active {
       box-shadow: 7px 3px 3px rgba(0, 0, 0, 0.2);
       border: 1px solid black;
       transform: translateY(-0.1rem);
+    }
+  }
+
+  &Question {
+    font-size: 1.4rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  &Link {
+    text-decoration: underline;
+    color: $primary-color;
+    transition: all 0.3s;
+
+    &:hover {
+      color: darken($primary-color, 30%);
     }
   }
 }
