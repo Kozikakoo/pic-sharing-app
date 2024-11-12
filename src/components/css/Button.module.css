@@ -1,0 +1,25 @@
+.button {
+  height: 30px;
+  border-radius: 25px;
+  margin: 0;
+  padding: 0 24px;
+  border: none;
+}
+.button:hover {
+  cursor: pointer;
+}
+
+.orange {
+  background-color: #e66127;
+  color: white;
+}
+
+.white {
+  background-color: white;
+  color: #3f446b;
+}
+
+.blue {
+  background-color: #3f446b;
+  color: white;
+}/*# sourceMappingURL=Button.module.css.map */

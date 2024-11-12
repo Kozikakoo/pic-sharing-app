@@ -1,10 +1,10 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Tools from "../tools/tools";
-import styles from "./canvas.module.scss";
+import styles from "./Canvas.module.scss";
 import { usePaintStylesContext } from "@/context/paint-styles-context";
 import { PaintColor, PaintWidth } from "@/lib/type";
-import Button from "../button/button";
+import Button from "../Button/Button";
 import { useActiveComponentContext } from "@/context/active-component-context";
 import { useOpenPopupContext } from "@/context/popup-open-context";
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.scss";
-import Header from "@/components/header/header";
+import Header from "@/components/Header/Header";
 import PaintStylesContextProvider from "@/context/paint-styles-context";
 import ActiveComponentContextProvider from "@/context/active-component-context";
 import OpenPopupContextProvider from "@/context/popup-open-context";

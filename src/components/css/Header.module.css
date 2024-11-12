@@ -1,0 +1,15 @@
+.header {
+  border-bottom: 1px #3f446b solid;
+  height: 90px;
+  margin: 0 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonBlock {
+  position: absolute;
+  right: 90px;
+  display: flex;
+  gap: 20px;
+}/*# sourceMappingURL=Header.module.css.map */

@@ -1,0 +1,14 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.formSignIn {
+  justify-content: space-between;
+}
+
+.formInput {
+  @include form-input;
+}
+
+.inputName {
+  font-size: 1.3rem;
+}

@@ -2,10 +2,10 @@
 import styles from "./tools.module.scss";
 import { RefObject, useEffect, useRef, useState } from "react";
 import { usePaintStylesContext } from "@/context/paint-styles-context";
-import ColorPalette from "../colorPalette/colorPalette";
+import ColorPalette from "../ColorPalette/ColorPalette";
 import { ToolsProps } from "./tools.props";
 import { PaintColor, PaintWidth } from "@/lib/type";
-import ColorButton from "../colorButton/colorButton";
+import ColorButton from "../ColorButton/ColorButton";
 import Pen from "../../assets/pen.svg";
 import Trash from "../../assets/trash.svg";
 import Back from "../../assets/back.svg";

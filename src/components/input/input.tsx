@@ -1,16 +1,17 @@
 import cn from "classnames";
-import styles from "./input.module.scss";
-import { InputProps } from "./input.props";
+import styles from "./Input.module.scss";
+import { InputProps } from "./Input.props";
 
 const Input = ({ className, children, placeholder, ...props }: InputProps) => {
   return (
-    <input
-      className={cn(styles.input, className)}
-      placeholder={placeholder}
-      {...props}
-    >
+    <>
       {children}
-    </input>
+      <input
+        className={cn(styles.input, className)}
+        placeholder={placeholder}
+        {...props}
+      />
+    </>
   );
 };
 

@@ -1,0 +1,10 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.formInput {
+  @include form-input;
+}
+
+.inputName {
+  font-size: 1.3rem;
+}

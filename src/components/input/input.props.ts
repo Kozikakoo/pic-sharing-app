@@ -5,6 +5,6 @@ export interface InputProps
     HTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {
-  children: ReactNode;
+  children?: ReactNode;
   placeholder: string;
 }

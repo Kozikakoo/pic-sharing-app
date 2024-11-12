@@ -5,10 +5,10 @@ import {
   paintColorsBrightness,
   topRowColors,
 } from "@/lib/data";
-import styles from "./colorPalette.module.scss";
+import styles from "./ColorPalette.module.scss";
 import { PaintColor, PaintWidth } from "@/lib/type";
 import { usePaintStylesContext } from "@/context/paint-styles-context";
-import { ColorPaletteProps } from "./colorPalette.props";
+import { ColorPaletteProps } from "./ColorPalette.props";
 import RangeWidth from "../rangeWidth/rangeWidth";
 import { useEffect, useRef } from "react";
 

@@ -3,3 +3,20 @@
   justify-content: center;
   align-items: center;
 }
+
+@mixin form-input {
+  font-size: 1.5rem;
+  border-radius: 3px;
+  margin-bottom: 2rem;
+  margin-top: 0.5rem;
+
+  &:last-of-type {
+    margin-bottom: 3rem;
+  }
+
+  &:focus {
+    outline: solid $primary-color;
+    border: 1px solid $primary-color;
+    box-shadow: 7px 3px 3px rgba(0, 0, 0, 0.2);
+  }
+}

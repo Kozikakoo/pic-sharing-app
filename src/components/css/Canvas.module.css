@@ -1,0 +1,33 @@
+.canvas {
+  background-color: white;
+  border: #3f446b solid 1px;
+  border-radius: 30px;
+  margin-right: 14%;
+  cursor: none;
+}
+
+.paintBlock {
+  display: flex;
+  justify-content: left;
+  width: 100%;
+  margin: 85px 0;
+}
+
+.toolsWithButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.saveButton {
+  width: 180px;
+  margin: 0;
+  font-size: 17px;
+}
+
+.cursor {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}/*# sourceMappingURL=Canvas.module.css.map */

@@ -1,4 +1,4 @@
-import Button from "../button/button";
+import Button from "../Button/Button";
 import Logo from "../logo/logo";
 import Search from "../search/search";
 import styles from "./header.module.scss";

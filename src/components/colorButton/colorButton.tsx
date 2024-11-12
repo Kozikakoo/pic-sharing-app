@@ -1,5 +1,5 @@
-import { ColorButtonProps } from "./colorButton.props";
-import styles from "./colorButton.module.scss";
+import { ColorButtonProps } from "./ColorButton.props";
+import styles from "./ColorButton.module.scss";
 import { forwardRef } from "react";
 
 const ColorButton = forwardRef<HTMLButtonElement, ColorButtonProps>(

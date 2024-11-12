@@ -1,0 +1,25 @@
+.search {
+  width: 100%;
+  border-radius: 25px;
+  border: none;
+  height: 30px;
+  padding: 0 49px 0 15px;
+}
+
+.glass {
+  width: 34px;
+  height: 30px;
+  position: absolute;
+  right: 0;
+  opacity: 0.5;
+  padding: 6px 7px;
+  border-left: 1px solid grey;
+}
+.glass:hover {
+  cursor: pointer;
+}
+
+.containerSearch {
+  position: relative;
+  width: 40%;
+}/*# sourceMappingURL=search.module.css.map */

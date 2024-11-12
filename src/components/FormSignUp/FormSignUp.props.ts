@@ -6,6 +6,4 @@ export interface FormProps
     HTMLFormElement
   > {
   children: ReactNode;
-  textButton: string;
-  title: string;
 }

@@ -1,5 +1,5 @@
-import { ButtonProps } from "./button.props";
-import styles from "./button.module.scss";
+import { ButtonProps } from "./Button.props";
+import styles from "./Button.module.scss";
 import cn from "classnames";
 
 const Button = ({

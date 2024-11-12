@@ -1,0 +1,28 @@
+.popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 15px;
+  z-index: 1001;
+  width: 30%;
+  height: -moz-max-content;
+  height: max-content;
+  padding: 30px;
+  gap: 50px;
+}
+.popup h1 {
+  text-align: center;
+  font-size: 25px;
+}
+
+.blockButton {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.blockButton button {
+  font-size: 17px;
+  width: 120px;
+}/*# sourceMappingURL=popup.module.css.map */

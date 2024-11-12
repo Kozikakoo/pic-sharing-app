@@ -1,5 +1,3 @@
-@import "../styles/utils/variables.scss";
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -12,13 +10,13 @@ html {
 
 html,
 body {
-  color: $text-color;
+  color: #3f446b;
   max-width: 100vw;
   overflow-x: hidden;
-  background-color: $background-color;
+  background-color: #fff4e4;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-}
+}/*# sourceMappingURL=globals.css.map */

@@ -1,6 +1,6 @@
 "use client";
-import Overlay from "@/components/overlay/overlay";
-import CanvasPaint from "../../components/canvas/canvas";
+import Overlay from "@/components/Overlay/Overlay";
+import CanvasPaint from "../../components/Canvas/Canvas";
 import styles from "../page.module.scss";
 import Popup from "@/components/popup/popup";
 import { useOpenPopupContext } from "@/context/popup-open-context";
