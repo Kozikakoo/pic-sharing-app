@@ -19,6 +19,8 @@ const CanvasPaint = () => {
     currentStyle,
     setCurrentStyle,
   } = usePaintStylesContext();
+
+  //переменные из контекста popup определяют, что нажал пользователь да/нет
   const { isClickYes, setIsClickYes } = useOpenPopupContext();
   const { setActivePalette } = useActiveComponentContext();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -42,8 +44,6 @@ const CanvasPaint = () => {
       context.moveTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
       setIsDrawing(true);
       setActivePalette(null);
-
-      //e.preventDefault();
     }
   };
 
@@ -57,8 +57,6 @@ const CanvasPaint = () => {
       ...currentPath,
       { x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY },
     ]);
-
-    //e.preventDefault();
   };
 
   const end = () => {

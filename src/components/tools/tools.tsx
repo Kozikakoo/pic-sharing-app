@@ -49,7 +49,7 @@ const Tools = ({
     buttonsToRemove: React.RefObject<HTMLButtonElement>[]
   ) => {
     if (buttonToAdd.current) {
-      buttonToAdd.current.style.border = "1px solid black";
+      buttonToAdd.current.style.border = "3px solid #e66127";
     }
 
     buttonsToRemove.forEach((button) => {
@@ -86,10 +86,14 @@ const Tools = ({
     setActiveColorButton("eraser");
   };
 
-  const fillSVG = () => {
+  const fillPenSVG = () => {
     if (activeColorButton == "eraser") {
       return darkColors.includes(lastColor) ? "white" : "black";
     } else return darkColors.includes(paintColor) ? "white" : "black";
+  };
+
+  const fillBackSVG = () => {
+    darkColors.includes(backgroundColor) ? "white" : "black";
   };
 
   return (
@@ -105,7 +109,7 @@ const Tools = ({
         onClick={() => togglePalette("pen")}
         ref={PenRef}
       >
-        <Pen fill={fillSVG()} />
+        <Pen fill={fillPenSVG()} />
       </ColorButton>
       <ColorButton
         onClick={() => togglePalette("background")}
@@ -114,7 +118,7 @@ const Tools = ({
         }}
         ref={BackgroundRef}
       >
-        <Back fill={darkColors.includes(backgroundColor) ? "white" : "black"} />
+        <Back fill={fillBackSVG()} />
       </ColorButton>
       <ColorButton onClick={onClickEraser} ref={EraserRef}>
         <Eraser />

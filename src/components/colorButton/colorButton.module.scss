@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import "../../styles/utils/variables.scss";
 
 .circle {
   width: 46px;
@@ -17,6 +17,6 @@
     height: 23px;
   }
   &:hover {
-    border: 1px $text-color solid;
+    border: 3px #e66127 solid;
   }
 }
