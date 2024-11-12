@@ -1,9 +1,11 @@
-import { ReactNode } from "react";
+"use client";
+import { ReactNode, useEffect } from "react";
 import Button from "../Button/Button";
 import styles from "./Form.module.scss";
 import { FormProps } from "./Form.props";
 import cn from "classnames";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Form = ({
   children,
@@ -13,8 +15,23 @@ const Form = ({
   textLink,
   className,
 }: FormProps) => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const overlay = document.getElementById("overlay");
+
+    window.addEventListener("click", (e) => {
+      if (overlay == e.target) {
+        router.push("/");
+      }
+    });
+  }, []);
+
   return (
     <form className={cn(className, styles.form)}>
+      <Link href="/">
+        <div className={styles.formClose}>&times;</div>
+      </Link>
       <h1 className={styles.formTitle}>{title}</h1>
       {children}
       <Button

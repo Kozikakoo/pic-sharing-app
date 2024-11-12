@@ -1,7 +1,7 @@
 "use client";
 import { useOpenPopupContext } from "@/context/popup-open-context";
 import Button from "../Button/Button";
-import styles from "./popup.module.scss";
+import styles from "./Popup.module.scss";
 
 const Popup = () => {
   const { isOpenPopup, setIsOpenPopup, setIsClickYes } = useOpenPopupContext();

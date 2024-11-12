@@ -1,5 +1,5 @@
 import { Karantina } from "next/font/google";
-import styles from "./logo.module.scss";
+import styles from "./Logo.module.scss";
 import cn from "classnames";
 
 const karantina = Karantina({ subsets: ["latin"], weight: ["400", "700"] });

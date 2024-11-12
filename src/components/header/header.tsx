@@ -1,5 +1,6 @@
+import Link from "next/link";
 import Button from "../Button/Button";
-import Logo from "../logo/logo";
+import Logo from "../Logo/Logo";
 import Search from "../search/search";
 import styles from "./header.module.scss";
 
@@ -9,8 +10,12 @@ const Header = () => {
       <Logo />
       <Search />
       <div className={styles.buttonBlock}>
-        <Button color="white" text="Войти" />
-        <Button color="orange" text="Регистрация" />
+        <Link href="/sign-in">
+          <Button color="white" text="Войти" />
+        </Link>
+        <Link href="/sign-up">
+          <Button color="orange" text="Регистрация" />
+        </Link>
       </div>
     </header>
   );

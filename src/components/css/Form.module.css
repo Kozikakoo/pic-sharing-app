@@ -1,5 +1,6 @@
 .form {
   display: flex;
+  position: relative;
   flex-direction: column;
   background-color: white;
   padding: 4.5rem 6rem;
@@ -39,4 +40,15 @@
 }
 .formLink:hover {
   color: #68280c;
+}
+.formClose {
+  top: 1rem;
+  right: 2rem;
+  position: absolute;
+  font-size: 3rem;
+  transition: color 0.3s;
+}
+.formClose:hover {
+  cursor: pointer;
+  color: black;
 }/*# sourceMappingURL=form.module.css.map */

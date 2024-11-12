@@ -2,6 +2,7 @@
 
 .form {
   display: flex;
+  position: relative;
   flex-direction: column;
   background-color: white;
   padding: 4.5rem 6rem;
@@ -45,6 +46,19 @@
 
     &:hover {
       color: darken($primary-color, 30%);
+    }
+  }
+
+  &Close {
+    top: 1rem;
+    right: 2rem;
+    position: absolute;
+    font-size: 3rem;
+    transition: color 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      color: darken($text-color, 50%);
     }
   }
 }
