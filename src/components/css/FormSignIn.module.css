@@ -19,4 +19,15 @@
 
 .inputName {
   font-size: 1.3rem;
+}
+
+.inputBox {
+  position: relative;
+}
+
+.error {
+  position: absolute;
+  bottom: 13px;
+  left: 0;
+  color: red;
 }/*# sourceMappingURL=FormSignIn.module.css.map */

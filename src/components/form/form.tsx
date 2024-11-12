@@ -14,6 +14,7 @@ const Form = ({
   question,
   textLink,
   className,
+  ...props
 }: FormProps) => {
   const router = useRouter();
 
@@ -28,7 +29,7 @@ const Form = ({
   }, []);
 
   return (
-    <form className={cn(className, styles.form)}>
+    <form className={cn(className, styles.form)} noValidate {...props}>
       <Link href="/">
         <div className={styles.formClose}>&times;</div>
       </Link>
