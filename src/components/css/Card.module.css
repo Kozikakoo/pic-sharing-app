@@ -1,0 +1,16 @@
+.cardImgBox {
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  position: relative;
+}
+.cardPicBox {
+  position: relative;
+  border-radius: 10px;
+  width: 100%;
+  height: 18rem;
+}
+.cardDescription {
+  font-size: 1.5rem;
+}/*# sourceMappingURL=Card.module.css.map */

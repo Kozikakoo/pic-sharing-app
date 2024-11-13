@@ -1,9 +1,9 @@
 "use client";
-import styles from "./tools.module.scss";
+import styles from "./Tools.module.scss";
 import { RefObject, useEffect, useRef, useState } from "react";
 import { usePaintStylesContext } from "@/context/paint-styles-context";
 import ColorPalette from "../ColorPalette/ColorPalette";
-import { ToolsProps } from "./tools.props";
+import { ToolsProps } from "./Tools.props";
 import { PaintColor, PaintWidth } from "@/lib/type";
 import ColorButton from "../ColorButton/ColorButton";
 import Pen from "../../assets/pen.svg";

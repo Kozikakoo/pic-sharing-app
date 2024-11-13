@@ -6,10 +6,10 @@ import {
   topRowColors,
 } from "@/lib/data";
 import styles from "./ColorPalette.module.scss";
-import { PaintColor, PaintWidth } from "@/lib/type";
+import { PaintColor } from "@/lib/type";
 import { usePaintStylesContext } from "@/context/paint-styles-context";
 import { ColorPaletteProps } from "./ColorPalette.props";
-import RangeWidth from "../rangeWidth/rangeWidth";
+import RangeWidth from "../RangeWidth/RangeWidth";
 import { useEffect, useRef } from "react";
 
 const ColorPalette = ({

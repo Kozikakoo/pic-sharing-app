@@ -1,0 +1,20 @@
+.card {
+  &ImgBox {
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    position: relative;
+  }
+
+  &PicBox {
+    position: relative;
+    border-radius: 10px;
+    width: 100%;
+    height: 18rem;
+  }
+
+  &Description {
+    font-size: 1.5rem;
+  }
+}

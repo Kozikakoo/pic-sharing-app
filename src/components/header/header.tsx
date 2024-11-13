@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Button from "../Button/Button";
 import Logo from "../Logo/Logo";
-import Search from "../search/search";
+import Search from "../Search/Search";
 import styles from "./header.module.scss";
 
 const Header = () => {

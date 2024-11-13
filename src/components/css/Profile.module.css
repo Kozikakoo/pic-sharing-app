@@ -1,0 +1,60 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 0;
+  width: 100%;
+}
+.profileImg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: cadetblue;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50px;
+  margin: 0 auto;
+}
+.profileLetter {
+  font-size: 6rem;
+}
+.profileName {
+  font-size: 4rem;
+  margin: 2rem auto;
+}
+.profileUsername {
+  font-size: 1.8rem;
+  opacity: 0.7;
+  margin: 0 auto;
+}
+.profileSub {
+  font-size: 2.2rem;
+  margin: 2rem auto;
+  opacity: 0.9;
+}
+.profileLinks {
+  display: flex;
+  gap: 2rem;
+  margin: 4rem auto;
+  font-size: 2.2rem;
+}
+.profileLink {
+  cursor: pointer;
+}
+
+.buttonsBox {
+  display: flex;
+  gap: 1rem;
+  margin: 0 auto;
+}
+.buttonsBox button {
+  height: 4rem;
+  font-size: 1.8rem;
+}
+
+.cards {
+  display: grid;
+  justify-content: center;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, 25rem);
+  gap: 2rem;
+}/*# sourceMappingURL=Profile.module.css.map */

@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import Tools from "../tools/tools";
+import Tools from "../Tools/Tools";
 import styles from "./Canvas.module.scss";
 import { usePaintStylesContext } from "@/context/paint-styles-context";
 import { PaintColor, PaintWidth } from "@/lib/type";

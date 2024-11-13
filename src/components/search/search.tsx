@@ -1,4 +1,4 @@
-import styles from "./search.module.scss";
+import styles from "./Search.module.scss";
 import Glass from "../../assets/glass.svg";
 import Input from "../Input/Input";
 
