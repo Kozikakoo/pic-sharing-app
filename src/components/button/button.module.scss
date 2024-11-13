@@ -10,6 +10,11 @@
   &:hover {
     cursor: pointer;
   }
+
+  &:disabled {
+    background-color: bisque;
+    cursor: default;
+  }
 }
 
 .orange {

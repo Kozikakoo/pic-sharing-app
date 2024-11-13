@@ -8,6 +8,10 @@
 .button:hover {
   cursor: pointer;
 }
+.button:disabled {
+  background-color: bisque;
+  cursor: default;
+}
 
 .orange {
   background-color: #e66127;

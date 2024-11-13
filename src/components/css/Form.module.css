@@ -28,6 +28,11 @@
   border: 1px solid black;
   transform: translateY(-0.1rem);
 }
+.formButton:disabled {
+  box-shadow: none;
+  border: none;
+  transform: none;
+}
 .formQuestion {
   font-size: 1.4rem;
   text-align: center;

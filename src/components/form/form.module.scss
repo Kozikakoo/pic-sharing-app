@@ -31,6 +31,12 @@
       border: 1px solid black;
       transform: translateY(-0.1rem);
     }
+
+    &:disabled {
+      box-shadow: none;
+      border: none;
+      transform: none;
+    }
   }
 
   &Question {

@@ -15,7 +15,7 @@ const FormSignUp = () => {
     register,
     handleSubmit,
     setError,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isDirty, isValid },
   } = useForm<FormFields>({
     resolver: zodResolver(registerSchema),
   });
@@ -31,6 +31,8 @@ const FormSignUp = () => {
       question="Уже зарегистрированы?"
       textLink="Войти"
       onSubmit={handleSubmit(onSubmit)}
+      isSubmitting={isSubmitting}
+      disabled={!isValid && isDirty}
     >
       <div className={styles.inputBox}>
         <Input

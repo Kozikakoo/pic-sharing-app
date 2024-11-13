@@ -13,6 +13,8 @@ const Form = ({
   textButton,
   question,
   textLink,
+  isSubmitting,
+  disabled,
   className,
   ...props
 }: FormProps) => {
@@ -40,6 +42,7 @@ const Form = ({
         text={textButton}
         type="submit"
         className={styles.formButton}
+        disabled={disabled}
       />
       <p className={styles.formQuestion}>
         {question + " "}

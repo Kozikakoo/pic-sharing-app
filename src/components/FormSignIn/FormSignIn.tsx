@@ -14,7 +14,7 @@ const FormSignIn = () => {
     register,
     handleSubmit,
     setError,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isValid },
   } = useForm<FormFields>({
     resolver: zodResolver(loginSchema),
   });
@@ -30,6 +30,8 @@ const FormSignIn = () => {
       className={styles.formSignIn}
       question="Ещё нет учетной записи?"
       textLink="Регистрация"
+      isSubmitting={isSubmitting}
+      disabled={isSubmitting || !isValid}
       onSubmit={handleSubmit(onSubmit)}
     >
       <div>
