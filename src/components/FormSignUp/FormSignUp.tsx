@@ -4,7 +4,7 @@ import Form from "../Form/Form";
 import Input from "../Input/Input";
 import styles from "./FormSignUp.module.scss";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { registerSchema } from "@/lib/schemas";
+import { registerSchema } from "@/lib/schemes";
 import { z } from "zod";
 import cn from "classnames";
 

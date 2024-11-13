@@ -4,7 +4,7 @@ import Input from "../Input/Input";
 import styles from "./FormSignIn.module.scss";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
-import { loginSchema } from "@/lib/schemas";
+import { loginSchema } from "@/lib/schemes";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 type FormFields = z.infer<typeof loginSchema>;
