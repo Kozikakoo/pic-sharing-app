@@ -7,27 +7,24 @@
   align-items: center;
   justify-content: center;
 }
+.headerPhoto {
+  position: absolute;
+  font-size: 3rem;
+  width: 6rem;
+  height: 6rem;
+  outline-offset: 1px;
+  outline: 2px #3f446b solid;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.headerPhoto:hover {
+  cursor: pointer;
+}
 
 .buttonBlock {
   position: absolute;
   right: 90px;
   display: flex;
   gap: 20px;
-}
-
-.circleProfile {
-  color: #3f446b;
-  font-size: 3rem;
-  width: 6rem;
-  height: 6rem;
-  background-color: cadetblue;
-  border-radius: 50px;
-  border: none;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.circleProfile:hover {
-  cursor: pointer;
 }/*# sourceMappingURL=Header.module.css.map */

@@ -1,6 +1,7 @@
 import Button from "../Button/Button";
 import styles from "./Profile.module.scss";
 import CardsGrid from "../CardsGrid/CardsGrid";
+import Link from "next/link";
 
 const Profile = () => {
   return (
@@ -14,7 +15,9 @@ const Profile = () => {
       <p className={styles.profileSub}>0 подписок</p>
       <div className={styles.buttonsBox}>
         <Button color="blue" text="Поделиться" />
-        <Button color="blue" text="Изменить профиль" />
+        <Link href="edit-profile">
+          <Button color="blue" text="Изменить профиль" />
+        </Link>
       </div>
       <div className={styles.profileLinks}>
         <a className={styles.profileLink}>Мои рисунки</a>

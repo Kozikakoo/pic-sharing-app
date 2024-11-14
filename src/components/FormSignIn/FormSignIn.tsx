@@ -6,7 +6,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { loginSchema } from "@/lib/schemes";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import cn from "classnames";
 
 type FormFields = z.infer<typeof loginSchema>;
 
@@ -41,7 +41,9 @@ const FormSignIn = () => {
             type="text"
             placeholder="example@yandex.ru"
             id="email"
-            className={styles.formInput}
+            className={cn(styles.inputForm, {
+              [styles.errorInput]: errors.email,
+            })}
             {...register("email")}
           >
             <label htmlFor="email" className={styles.inputName}>
@@ -58,7 +60,9 @@ const FormSignIn = () => {
             type="password"
             placeholder="Не менее 6 символов"
             id="password"
-            className={styles.formInput}
+            className={cn(styles.inputForm, {
+              [styles.errorInput]: errors.password,
+            })}
             {...register("password")}
           >
             <label htmlFor="password" className={styles.inputName}>

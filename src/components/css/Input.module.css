@@ -2,4 +2,11 @@
   width: 100%;
   border: 1px solid #3f446b;
   padding: 1rem;
+  font-size: 1.5rem;
+  border-radius: 5px;
+}
+.input:focus {
+  outline: solid #e66127;
+  border: 1px solid #e66127;
+  box-shadow: 7px 3px 3px rgba(0, 0, 0, 0.2);
 }/*# sourceMappingURL=Input.module.css.map */

@@ -1,11 +1,10 @@
 import styles from "./Search.module.scss";
 import Glass from "../../assets/glass.svg";
-import Input from "../Input/Input";
 
 const Search = (): JSX.Element => {
   return (
     <div className={styles.containerSearch}>
-      <Input className={styles.search} placeholder="Поиск" />
+      <input className={styles.search} placeholder="Поиск" />
       <Glass className={styles.glass} />
     </div>
   );

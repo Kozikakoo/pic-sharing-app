@@ -1,0 +1,60 @@
+@import "../../styles/utils/variables";
+
+.edit {
+  padding: 4rem 0;
+
+  &Title {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  &Form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    &:nth-of-child(1) {
+      gap: 0;
+    }
+  }
+}
+
+.label {
+  font-size: 1.3rem;
+  margin-bottom: 0.4rem;
+}
+
+.editPhoto {
+  font-size: 3rem;
+  width: 6rem;
+  height: 6rem;
+}
+
+.photoWithBtnBox {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.6rem;
+}
+
+.nameBox {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.columnBox {
+  display: flex;
+  flex-direction: column;
+
+  textarea {
+    height: 9rem;
+    padding: 1rem;
+    border-radius: 5px;
+
+    &:focus {
+      outline: $primary-color 3px solid;
+      border: none;
+    }
+  }
+}

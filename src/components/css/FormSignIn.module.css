@@ -1,20 +1,21 @@
-.formSignIn {
-  justify-content: space-between;
-}
-
-.formInput {
+/* @mixin form-input {
   font-size: 1.5rem;
   border-radius: 3px;
   margin-bottom: 2rem;
   margin-top: 0.5rem;
-}
-.formInput:last-of-type {
-  margin-bottom: 3rem;
-}
-.formInput:focus {
-  outline: solid #e66127;
-  border: 1px solid #e66127;
-  box-shadow: 7px 3px 3px rgba(0, 0, 0, 0.2);
+
+  &:last-of-type {
+    margin-bottom: 3rem;
+  }
+
+  &:focus {
+    outline: solid $primary-color;
+    border: 1px solid $primary-color;
+    box-shadow: 7px 3px 3px rgba(0, 0, 0, 0.2);
+  }
+} */
+.formSignIn {
+  justify-content: space-between;
 }
 
 .inputName {
@@ -30,4 +31,12 @@
   bottom: 13px;
   left: 0;
   color: red;
+}
+
+.inputForm {
+  margin-bottom: 2rem;
+  margin-top: 0.5rem;
+}
+.inputForm:last-of-type {
+  margin-bottom: 3rem;
 }/*# sourceMappingURL=FormSignIn.module.css.map */

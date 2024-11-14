@@ -1,9 +1,15 @@
+@import "../../styles/utils/variables";
+
 .search {
   width: 100%;
   border-radius: 25px;
   border: none;
   height: 30px;
   padding: 0 49px 0 15px;
+
+  &:focus {
+    outline: 1px $primary-color solid;
+  }
 }
 
 .glass {
@@ -14,9 +20,15 @@
   opacity: 0.5;
   padding: 6px 7px;
   border-left: 1px solid grey;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  transition: all 0.2s;
 
-  &:hover {
+  &:hover,
+  &:active {
     cursor: pointer;
+    border-left: none;
+    outline: 1px solid black;
   }
 }
 

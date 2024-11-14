@@ -40,7 +40,7 @@ const FormSignUp = () => {
           type="text"
           placeholder="Анастасия"
           id="name"
-          className={cn(styles.formInput, {
+          className={cn(styles.inputForm, {
             [styles.errorInput]: errors.name,
           })}
           {...register("name")}
@@ -60,7 +60,7 @@ const FormSignUp = () => {
           type="email"
           placeholder="example@yandex.ru"
           id="email"
-          className={cn(styles.formInput, {
+          className={cn(styles.inputForm, {
             [styles.errorInput]: errors.email,
           })}
           {...register("email")}
@@ -80,7 +80,7 @@ const FormSignUp = () => {
           type="password"
           placeholder="Не менее 6 символов"
           id="password"
-          className={cn(styles.formInput, {
+          className={cn(styles.inputForm, {
             [styles.errorInput]: errors.password,
           })}
           {...register("password")}
@@ -99,7 +99,7 @@ const FormSignUp = () => {
           type="password"
           placeholder="Не менее 6 символов"
           id="confirmPassword"
-          className={cn(styles.formInput, {
+          className={cn(styles.inputForm, {
             [styles.errorInput]: errors.confirmPassword,
           })}
           {...register("confirmPassword")}

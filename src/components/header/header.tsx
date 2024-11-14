@@ -3,6 +3,7 @@ import Button from "../Button/Button";
 import Logo from "../Logo/Logo";
 import Search from "../Search/Search";
 import styles from "./Header.module.scss";
+import Photo from "../Photo/Photo";
 
 const Header = () => {
   const auth = false;
@@ -13,7 +14,7 @@ const Header = () => {
       <Search />
 
       <Link href="/profile/id">
-        <button className={styles.circleProfile}>A</button>
+        <Photo className={styles.headerPhoto} />
       </Link>
 
       {auth && (

@@ -6,7 +6,7 @@ import { forwardRef } from "react";
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, children, placeholder, ...props }, ref) => {
     return (
-      <>
+      <div>
         {children}
         <input
           ref={ref}
@@ -14,7 +14,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           placeholder={placeholder}
           {...props}
         />
-      </>
+      </div>
     );
   }
 );
