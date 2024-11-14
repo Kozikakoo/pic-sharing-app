@@ -99,6 +99,7 @@ const Tools = ({
   return (
     <div className={styles.flexBlock}>
       <ColorButton
+        className={styles.toolsButton}
         style={
           activeColorButton == "eraser"
             ? {
@@ -112,6 +113,7 @@ const Tools = ({
         <Pen fill={fillPenSVG()} />
       </ColorButton>
       <ColorButton
+        className={styles.toolsButton}
         onClick={() => togglePalette("background")}
         style={{
           backgroundColor: backgroundColor,
@@ -120,16 +122,23 @@ const Tools = ({
       >
         <Back fill={fillBackSVG()} />
       </ColorButton>
-      <ColorButton onClick={onClickEraser} ref={EraserRef}>
+      <ColorButton
+        onClick={onClickEraser}
+        ref={EraserRef}
+        className={styles.toolsButton}
+      >
         <Eraser />
       </ColorButton>
-      <ColorButton onClick={undoDrawing}>
+      <ColorButton className={styles.toolsButton} onClick={undoDrawing}>
         <ArrowLeft />
       </ColorButton>
-      <ColorButton onClick={downloadCanvasImg}>
+      <ColorButton className={styles.toolsButton} onClick={downloadCanvasImg}>
         <Download />
       </ColorButton>
-      <ColorButton onClick={() => setIsOpenPopup(true)}>
+      <ColorButton
+        className={styles.toolsButton}
+        onClick={() => setIsOpenPopup(true)}
+      >
         <Trash />
       </ColorButton>
       {activePalette && (

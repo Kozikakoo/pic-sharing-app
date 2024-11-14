@@ -5,3 +5,14 @@
   gap: 9px;
   height: max-content;
 }
+
+.toolsButton {
+  width: 46px;
+  height: 46px;
+  background-size: 19px 19px;
+
+  svg {
+    width: 23px;
+    height: 23px;
+  }
+}

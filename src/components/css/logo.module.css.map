@@ -1,1 +1,1 @@
-{"version":3,"sources":["../Logo/Logo.module.scss","../../styles/utils/_variables.scss","Logo.module.css"],"names":[],"mappings":"AAEA;EACE,cCDW;EDEX,gBAAA;EACA,eAAA;AEDF;;AFIA;EACE,kBAAA;EACA,UAAA;AEDF","file":"Logo.module.css"}
+{"version":3,"sources":["../Logo/Logo.module.scss","../../styles/utils/_variables.scss","Logo.module.css"],"names":[],"mappings":"AAEA;EACE,cCDW;EDEX,gBAAA;EACA,eAAA;AEDF;;AFIA;EACE,kBAAA;EACA,OAAA;AEDF","file":"Logo.module.css"}

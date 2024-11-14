@@ -1,21 +1,14 @@
 @import "../../styles/utils/variables.scss";
 
 .circle {
-  width: 46px;
-  height: 46px;
   border-radius: 50%;
   background: white;
   border: none;
-  background-size: 19px 19px;
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
   transition: all 0.1s ease-out;
 
-  svg {
-    width: 23px;
-    height: 23px;
-  }
   &:hover {
     border: 3px #e66127 solid;
   }

@@ -31,4 +31,33 @@
     font-size: 1.3rem;
     font-weight: 700;
   }
+
+  &Overlay {
+    display: flex;
+    justify-content: flex-end;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    transition: all 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &Btn {
+      margin: 0.5rem 0.5rem 0 0;
+      width: 3rem;
+      height: 3rem;
+
+      svg {
+        width: 1.7rem;
+        height: 1.7rem;
+      }
+    }
+  }
 }

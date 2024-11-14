@@ -7,10 +7,48 @@
 }
 .cardPicBox {
   position: relative;
-  border-radius: 10px;
+  border-radius: 20px;
+  overflow: hidden;
   width: 100%;
   height: 18rem;
 }
 .cardDescription {
+  margin-top: 1rem;
+  padding: 0 1rem;
   font-size: 1.5rem;
+}
+.cardUser {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-top: 1rem;
+  padding: 0 1rem;
+  gap: 1rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.cardOverlay {
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.cardOverlay:hover {
+  opacity: 1;
+}
+.cardOverlayBtn {
+  margin: 0.5rem 0.5rem 0 0;
+  width: 3rem;
+  height: 3rem;
+}
+.cardOverlayBtn svg {
+  width: 1.7rem;
+  height: 1.7rem;
 }/*# sourceMappingURL=Card.module.css.map */

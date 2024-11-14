@@ -49,12 +49,4 @@
 .buttonsBox button {
   height: 4rem;
   font-size: 1.8rem;
-}
-
-.cards {
-  display: grid;
-  justify-content: center;
-  width: 100%;
-  grid-template-columns: repeat(auto-fill, 25rem);
-  gap: 2rem;
 }/*# sourceMappingURL=Profile.module.css.map */
