@@ -1,6 +1,6 @@
 import Button from "../Button/Button";
 import styles from "./Profile.module.scss";
-import Card from "../Card/Card";
+import CardsGrid from "../CardsGrid/CardsGrid";
 
 const Profile = () => {
   return (
@@ -20,15 +20,7 @@ const Profile = () => {
         <a className={styles.profileLink}>Мои рисунки</a>
         <a className={styles.profileLink}>Сохраненные</a>
       </div>
-
-      <div className={styles.cards}>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </div>
+      <CardsGrid />
     </div>
   );
 };

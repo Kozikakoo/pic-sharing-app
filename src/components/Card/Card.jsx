@@ -12,9 +12,11 @@ const Card = () => {
       <p className={styles.cardDescription}>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit.
       </p>
-
-      <div className={styles.cardImgBox}>
-        <Image src={user} alt="fdf" fill={true} objectFit="cover" />
+      <div className={styles.cardUser}>
+        <div className={styles.cardImgBox}>
+          <Image src={user} alt="fdf" fill={true} objectFit="cover" />
+        </div>
+        <p className={styles.cardUsername}>Анастасия Нагорная</p>
       </div>
     </div>
   );
