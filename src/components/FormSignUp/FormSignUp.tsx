@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "@/lib/schemes";
 import { z } from "zod";
 import cn from "classnames";
+import { useEffect } from "react";
 
 type FormFields = z.infer<typeof registerSchema>;
 
@@ -15,11 +16,12 @@ const FormSignUp = () => {
     register,
     handleSubmit,
     setError,
-    formState: { errors, isSubmitting, isDirty, isValid },
+    formState: { errors, isSubmitting, submitCount, isValid },
   } = useForm<FormFields>({
     resolver: zodResolver(registerSchema),
   });
 
+  const disabledButton = (submitCount > 0 && !isValid) || isSubmitting;
   const onSubmit: SubmitHandler<FormFields> = (data) => {
     console.log(data);
   };
@@ -31,11 +33,11 @@ const FormSignUp = () => {
       question="Уже зарегистрированы?"
       textLink="Войти"
       onSubmit={handleSubmit(onSubmit)}
-      isSubmitting={isSubmitting}
-      disabled={!isValid && isDirty}
+      disabled={disabledButton}
     >
       <div className={styles.inputBox}>
         <Input
+          type="text"
           placeholder="Анастасия"
           id="name"
           className={cn(styles.formInput, {
@@ -55,6 +57,7 @@ const FormSignUp = () => {
       <div className={styles.inputBox}>
         {" "}
         <Input
+          type="email"
           placeholder="example@yandex.ru"
           id="email"
           className={cn(styles.formInput, {
@@ -74,6 +77,7 @@ const FormSignUp = () => {
       <div className={styles.inputBox}>
         {" "}
         <Input
+          type="password"
           placeholder="Не менее 6 символов"
           id="password"
           className={cn(styles.formInput, {
@@ -92,6 +96,7 @@ const FormSignUp = () => {
 
       <div className={styles.inputBox}>
         <Input
+          type="password"
           placeholder="Не менее 6 символов"
           id="confirmPassword"
           className={cn(styles.formInput, {
@@ -99,7 +104,7 @@ const FormSignUp = () => {
           })}
           {...register("confirmPassword")}
         >
-          <label htmlFor="password" className={styles.inputName}>
+          <label htmlFor="confirmPassword" className={styles.inputName}>
             Подтвердите пароль
           </label>
         </Input>

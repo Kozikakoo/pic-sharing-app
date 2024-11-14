@@ -10,6 +10,5 @@ export interface FormProps
   title: string;
   question: string;
   textLink: "Войти" | "Регистрация";
-  isSubmitting: boolean;
   disabled: boolean;
 }

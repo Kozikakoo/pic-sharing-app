@@ -6,6 +6,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { loginSchema } from "@/lib/schemes";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 
 type FormFields = z.infer<typeof loginSchema>;
 
@@ -14,11 +15,12 @@ const FormSignIn = () => {
     register,
     handleSubmit,
     setError,
-    formState: { errors, isSubmitting, isValid },
+    formState: { errors, isSubmitting, isValid, submitCount },
   } = useForm<FormFields>({
     resolver: zodResolver(loginSchema),
   });
 
+  const disabledButton = (submitCount > 0 && !isValid) || isSubmitting;
   const onSubmit: SubmitHandler<FormFields> = (data) => {
     console.log(data);
   };
@@ -30,8 +32,7 @@ const FormSignIn = () => {
       className={styles.formSignIn}
       question="Ещё нет учетной записи?"
       textLink="Регистрация"
-      isSubmitting={isSubmitting}
-      disabled={isSubmitting || !isValid}
+      disabled={disabledButton}
       onSubmit={handleSubmit(onSubmit)}
     >
       <div>

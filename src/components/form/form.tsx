@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import Button from "../Button/Button";
 import styles from "./Form.module.scss";
 import { FormProps } from "./Form.props";
@@ -13,7 +13,6 @@ const Form = ({
   textButton,
   question,
   textLink,
-  isSubmitting,
   disabled,
   className,
   ...props
