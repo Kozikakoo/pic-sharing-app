@@ -1,3 +1,4 @@
+"use client";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import Photo from "../Photo/Photo";
@@ -6,22 +7,23 @@ import styles from "./Edit.module.scss";
 const Edit = () => {
   return (
     <div className={styles.edit}>
-      <h1 className={styles.editTitle}>Изменение профиля</h1>
-      <form className={styles.editForm}>
+      <h1 className={styles.title}>Изменение профиля</h1>
+      <form className={styles.form}>
         <div>
-          <p className={styles.label}>Фотография</p>
-          <div className={styles.photoWithBtnBox}>
-            <Photo className={styles.editPhoto} />
-            <div className={styles.editBtnInput}>
+          <label className={styles.label} htmlFor="photo">
+            Фотография
+          </label>
+          <div className={styles.photoBox}>
+            <Photo className={styles.photo} />
+            <div className={styles.photoInput}>
               <Button color="white" text="Изменить" />
-              <label className={styles.editPhotoLabel} htmlFor="photo">
+              <label className={styles.photoLabel} htmlFor="photo">
                 Фото
               </label>
-              <Input className={styles.editPhotoInput} type="file" id="photo" />
+              <Input className={styles.inputGhost} type="file" id="photo" />
             </div>
           </div>
         </div>
-
         <div className={styles.nameBox}>
           <Input id="name">
             <label className={styles.label} htmlFor="name">
@@ -34,7 +36,6 @@ const Edit = () => {
             </label>
           </Input>
         </div>
-
         <div className={styles.columnBox}>
           <label htmlFor="description" className={styles.label}>
             Описание
@@ -45,7 +46,6 @@ const Edit = () => {
             placeholder="Расскажите о себе"
           />
         </div>
-
         <Input
           placeholder="Ваш ник для удобного поиска"
           defaultValue="aanagornaia"
@@ -56,6 +56,10 @@ const Edit = () => {
           </label>
         </Input>
         <p className={styles.usernameLink}>www.picsharing.ru/aanagornaia</p>
+        <div className={styles.submitBtns}>
+          <Button color="blue" text="Сбросить" />
+          <Button color="blue" text="Сохранить" />
+        </div>
       </form>
     </div>
   );
