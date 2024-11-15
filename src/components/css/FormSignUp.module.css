@@ -14,15 +14,15 @@
     box-shadow: 7px 3px 3px rgba(0, 0, 0, 0.2);
   }
 } */
-.inputForm {
+.input {
   margin-bottom: 2rem;
   margin-top: 0.5rem;
 }
-.inputForm:last-of-type {
+.input:last-of-type {
   margin-bottom: 3rem;
 }
 
-.inputName {
+.label {
   font-size: 1.3rem;
 }
 

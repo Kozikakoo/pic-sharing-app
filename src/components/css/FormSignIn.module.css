@@ -17,26 +17,25 @@
 .formSignIn {
   justify-content: space-between;
 }
-
-.inputName {
+.formSignIn .label {
   font-size: 1.3rem;
 }
-
-.inputBox {
+.formSignIn .inputBox {
   position: relative;
 }
-
-.error {
+.formSignIn .error {
   position: absolute;
   bottom: 13px;
   left: 0;
   color: red;
 }
-
-.inputForm {
+.formSignIn .errorInput {
+  border: 1px red solid;
+}
+.formSignIn .input {
   margin-bottom: 2rem;
   margin-top: 0.5rem;
 }
-.inputForm:last-of-type {
+.formSignIn .input:last-of-type {
   margin-bottom: 3rem;
 }/*# sourceMappingURL=FormSignIn.module.css.map */

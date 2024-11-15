@@ -42,12 +42,12 @@ const FormSignIn = () => {
             type="text"
             placeholder="example@yandex.ru"
             id="email"
-            className={cn(styles.inputForm, {
+            className={cn(styles.input, {
               [styles.errorInput]: errors.email,
             })}
             {...register("email")}
           >
-            <label htmlFor="email" className={styles.inputName}>
+            <label htmlFor="email" className={styles.label}>
               Почта
             </label>
           </Input>
@@ -61,12 +61,12 @@ const FormSignIn = () => {
             type="password"
             placeholder="Не менее 6 символов"
             id="password"
-            className={cn(styles.inputForm, {
+            className={cn(styles.input, {
               [styles.errorInput]: errors.password,
             })}
             {...register("password")}
           >
-            <label htmlFor="password" className={styles.inputName}>
+            <label htmlFor="password" className={styles.label}>
               Пароль
             </label>
           </Input>

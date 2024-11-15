@@ -3,28 +3,32 @@
 
 .formSignIn {
   justify-content: space-between;
-}
 
-.inputName {
-  font-size: 1.3rem;
-}
+  .label {
+    font-size: 1.3rem;
+  }
 
-.inputBox {
-  position: relative;
-}
+  .inputBox {
+    position: relative;
+  }
 
-.error {
-  position: absolute;
-  bottom: 13px;
-  left: 0;
-  color: red;
-}
+  .error {
+    position: absolute;
+    bottom: 13px;
+    left: 0;
+    color: red;
 
-.inputForm {
-  margin-bottom: 2rem;
-  margin-top: 0.5rem;
+    &Input {
+      border: 1px red solid;
+    }
+  }
 
-  &:last-of-type {
-    margin-bottom: 3rem;
+  .input {
+    margin-bottom: 2rem;
+    margin-top: 0.5rem;
+
+    &:last-of-type {
+      margin-bottom: 3rem;
+    }
   }
 }

@@ -40,12 +40,12 @@ const FormSignUp = () => {
           type="text"
           placeholder="Анастасия"
           id="name"
-          className={cn(styles.inputForm, {
+          className={cn(styles.input, {
             [styles.errorInput]: errors.name,
           })}
           {...register("name")}
         >
-          <label htmlFor="name" className={styles.inputName}>
+          <label htmlFor="name" className={styles.label}>
             Имя
           </label>
         </Input>
@@ -60,12 +60,12 @@ const FormSignUp = () => {
           type="email"
           placeholder="example@yandex.ru"
           id="email"
-          className={cn(styles.inputForm, {
+          className={cn(styles.input, {
             [styles.errorInput]: errors.email,
           })}
           {...register("email")}
         >
-          <label htmlFor="email" className={styles.inputName}>
+          <label htmlFor="email" className={styles.label}>
             Почта
           </label>
         </Input>
@@ -80,12 +80,12 @@ const FormSignUp = () => {
           type="password"
           placeholder="Не менее 6 символов"
           id="password"
-          className={cn(styles.inputForm, {
+          className={cn(styles.input, {
             [styles.errorInput]: errors.password,
           })}
           {...register("password")}
         >
-          <label htmlFor="password" className={styles.inputName}>
+          <label htmlFor="password" className={styles.label}>
             Пароль
           </label>
         </Input>
@@ -99,12 +99,12 @@ const FormSignUp = () => {
           type="password"
           placeholder="Не менее 6 символов"
           id="confirmPassword"
-          className={cn(styles.inputForm, {
+          className={cn(styles.input, {
             [styles.errorInput]: errors.confirmPassword,
           })}
           {...register("confirmPassword")}
         >
-          <label htmlFor="confirmPassword" className={styles.inputName}>
+          <label htmlFor="confirmPassword" className={styles.label}>
             Подтвердите пароль
           </label>
         </Input>
