@@ -12,16 +12,26 @@ const Edit = () => {
           <p className={styles.label}>Фотография</p>
           <div className={styles.photoWithBtnBox}>
             <Photo className={styles.editPhoto} />
-            <Button color="white" text="Изменить" />
+            <div className={styles.editBtnInput}>
+              <Button color="white" text="Изменить" />
+              <label className={styles.editPhotoLabel} htmlFor="photo">
+                Фото
+              </label>
+              <Input className={styles.editPhotoInput} type="file" id="photo" />
+            </div>
           </div>
         </div>
 
         <div className={styles.nameBox}>
-          <Input>
-            <label className={styles.label}>Имя</label>
+          <Input id="name">
+            <label className={styles.label} htmlFor="name">
+              Имя
+            </label>
           </Input>
-          <Input>
-            <label className={styles.label}>Фамилия</label>
+          <Input id="lastname">
+            <label className={styles.label} htmlFor="lastname">
+              Фамилия
+            </label>
           </Input>
         </div>
 
@@ -36,11 +46,16 @@ const Edit = () => {
           />
         </div>
 
-        <Input placeholder="Ваш ник для удобного поиска">
-          <label className={styles.label}>Имя пользователя</label>
+        <Input
+          placeholder="Ваш ник для удобного поиска"
+          defaultValue="aanagornaia"
+          id="username"
+        >
+          <label className={styles.label} htmlFor="username">
+            Имя пользователя
+          </label>
         </Input>
-
-        {/*  <Input placeholder="" type="file" id="photo" /> */}
+        <p className={styles.usernameLink}>www.picsharing.ru/aanagornaia</p>
       </form>
     </div>
   );

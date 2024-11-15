@@ -17,17 +17,40 @@
       gap: 0;
     }
   }
+
+  &BtnInput {
+    position: relative;
+  }
 }
 
 .label {
   font-size: 1.3rem;
   margin-bottom: 0.4rem;
+  display: inline-block;
 }
 
 .editPhoto {
   font-size: 3rem;
   width: 6rem;
   height: 6rem;
+
+  &Label {
+    position: absolute;
+    font-size: 3rem;
+    width: 10rem;
+    height: 2.8rem;
+    top: 0;
+    left: 8px;
+    opacity: 0;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &Input {
+    display: none;
+  }
 }
 
 .photoWithBtnBox {
@@ -48,6 +71,7 @@
   flex-direction: column;
 
   textarea {
+    font-family: inherit;
     height: 9rem;
     padding: 1rem;
     border-radius: 5px;
@@ -57,4 +81,9 @@
       border: none;
     }
   }
+}
+
+.usernameLink {
+  font-size: 1.3rem;
+  opacity: 0.7;
 }
