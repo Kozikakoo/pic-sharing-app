@@ -100,3 +100,14 @@
     }
   }
 }
+
+.error {
+  color: red;
+  position: absolute;
+  bottom: -16px;
+  left: 0;
+
+  &Input {
+    border: 1px solid red;
+  }
+}

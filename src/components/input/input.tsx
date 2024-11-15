@@ -6,7 +6,7 @@ import { forwardRef } from "react";
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, children, placeholder, ...props }, ref) => {
     return (
-      <div>
+      <div className={styles.wrapper}>
         {children}
         <input
           ref={ref}

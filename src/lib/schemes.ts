@@ -31,3 +31,17 @@ export const registerSchema = z
     message: "Пароли не совпадают",
     path: ["confirmPassword"],
   });
+
+export const editSchema = z.object({
+  name: z
+    .string()
+    .min(1, { message: "Укажите своё имя" })
+    .max(30, { message: "Длина имени не должна превышать 30 символов" })
+    .trim(),
+  lastname: z.string().trim().optional(),
+  description: z.string().trim().optional(),
+  username: z
+    .string()
+    .min(1, { message: "Вам нужно указать имя пользователя" })
+    .trim(),
+});
