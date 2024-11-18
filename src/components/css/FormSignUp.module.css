@@ -16,14 +16,9 @@
 } */
 .input {
   margin-bottom: 2rem;
-  margin-top: 0.5rem;
 }
 .input:last-of-type {
   margin-bottom: 3rem;
-}
-
-.label {
-  font-size: 1.3rem;
 }
 
 .inputBox {

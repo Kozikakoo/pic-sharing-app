@@ -1,24 +1,25 @@
 "use client";
-import { editSchema } from "@/lib/schemes";
+import { editProfileSchema } from "@/lib/schemes";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import Photo from "../Photo/Photo";
-import styles from "./Edit.module.scss";
+import styles from "./EditProfile.module.scss";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import cn from "classnames";
 import { z } from "zod";
+import Textarea from "../Textarea/Textarea";
 
-type FormFields = z.infer<typeof editSchema>;
+type FormFields = z.infer<typeof editProfileSchema>;
 
-const Edit = () => {
+const EditProfile = () => {
   const {
     register,
     handleSubmit,
     setError,
     formState: { errors, isSubmitting, isValid, submitCount },
   } = useForm<FormFields>({
-    resolver: zodResolver(editSchema),
+    resolver: zodResolver(editProfileSchema),
   });
 
   const onSubmit: SubmitHandler<FormFields> = (data) => {
@@ -37,42 +38,45 @@ const Edit = () => {
             <Photo className={styles.photo} />
             <div className={styles.photoInput}>
               <Button color="white" text="Изменить" />
-              <label className={styles.photoLabel} htmlFor="photo">
-                Фото
-              </label>
-              <Input className={styles.inputGhost} type="file" id="photo" />
+              <Input
+                className={styles.inputGhost}
+                type="file"
+                id="photo"
+                labelFor="photo"
+                labelText="Фото"
+                classNameLabel={styles.photoLabel}
+              />
             </div>
           </div>
         </div>
         <div className={styles.nameBox}>
           <Input
             id="name"
+            labelFor="name"
+            labelText="Имя"
             {...register("name")}
             className={cn({ [styles.errorInput]: errors.name })}
           >
-            <label className={styles.label} htmlFor="name">
-              Имя
-            </label>
             {errors.name && (
               <span className={styles.error}>{errors.name.message}</span>
             )}
           </Input>
 
-          <Input id="lastname" {...register("lastname")}>
-            <label className={styles.label} htmlFor="lastname">
-              Фамилия
-            </label>
-          </Input>
+          <Input
+            id="lastname"
+            labelFor="lastname"
+            labelText="Фамилия"
+            {...register("lastname")}
+          />
         </div>
         <div className={styles.columnBox}>
-          <label htmlFor="description" className={styles.label}>
-            Описание
-          </label>
-          <textarea
+          <Textarea
             {...register("description")}
             id="description"
             name="description"
             placeholder="Расскажите о себе"
+            labelFor="description"
+            labelText="Описание"
           />
         </div>
         <Input
@@ -81,10 +85,9 @@ const Edit = () => {
           placeholder="Ваш ник для удобного поиска"
           defaultValue="aanagornaia"
           id="username"
+          labelFor="username"
+          labelText="Имя пользователя"
         >
-          <label className={styles.label} htmlFor="username">
-            Имя пользователя
-          </label>
           {errors.username && (
             <span className={styles.error}>{errors.username.message}</span>
           )}
@@ -100,4 +103,4 @@ const Edit = () => {
   );
 };
 
-export default Edit;
+export default EditProfile;

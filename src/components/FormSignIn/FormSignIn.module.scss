@@ -4,10 +4,6 @@
 .formSignIn {
   justify-content: space-between;
 
-  .label {
-    font-size: 1.3rem;
-  }
-
   .inputBox {
     position: relative;
   }
@@ -25,7 +21,6 @@
 
   .input {
     margin-bottom: 2rem;
-    margin-top: 0.5rem;
 
     &:last-of-type {
       margin-bottom: 3rem;

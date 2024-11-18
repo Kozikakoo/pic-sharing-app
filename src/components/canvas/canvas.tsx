@@ -7,6 +7,7 @@ import { PaintColor, PaintWidth } from "@/lib/type";
 import Button from "../Button/Button";
 import { useActiveComponentContext } from "@/context/active-component-context";
 import { useOpenPopupContext } from "@/context/popup-open-context";
+import Link from "next/link";
 
 const CanvasPaint = () => {
   const {
@@ -196,7 +197,13 @@ const CanvasPaint = () => {
           }
           downloadCanvasImg={downloadCanvasImg}
         />
-        <Button color="orange" text="Сохранить" className={styles.saveButton} />
+        <Link href="/img/test" shallow>
+          <Button
+            color="orange"
+            text="Сохранить"
+            className={styles.saveButton}
+          />
+        </Link>
       </div>
     </div>
   );

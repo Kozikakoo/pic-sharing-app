@@ -4,16 +4,30 @@ import { InputProps } from "./Input.props";
 import { forwardRef } from "react";
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, children, placeholder, ...props }, ref) => {
+  (
+    {
+      className,
+      classNameLabel,
+      children,
+      placeholder,
+      labelFor,
+      labelText,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <div className={styles.wrapper}>
-        {children}
+        <label className={cn(classNameLabel, styles.label)} htmlFor={labelFor}>
+          {labelText}
+        </label>
         <input
           ref={ref}
           className={cn(styles.input, className)}
           placeholder={placeholder}
           {...props}
         />
+        {children}
       </div>
     );
   }

@@ -68,18 +68,6 @@
   .columnBox {
     display: flex;
     flex-direction: column;
-
-    textarea {
-      font-family: inherit;
-      height: 9rem;
-      padding: 1rem;
-      border-radius: 5px;
-
-      &:focus {
-        outline: $primary-color 3px solid;
-        border: none;
-      }
-    }
   }
 
   .usernameLink {

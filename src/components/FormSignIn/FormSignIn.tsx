@@ -42,15 +42,13 @@ const FormSignIn = () => {
             type="text"
             placeholder="example@yandex.ru"
             id="email"
+            labelFor="email"
+            labelText="Почта"
             className={cn(styles.input, {
               [styles.errorInput]: errors.email,
             })}
             {...register("email")}
-          >
-            <label htmlFor="email" className={styles.label}>
-              Почта
-            </label>
-          </Input>
+          />
           {errors.email && (
             <span className={styles.error}>{errors.email.message}</span>
           )}
@@ -61,15 +59,13 @@ const FormSignIn = () => {
             type="password"
             placeholder="Не менее 6 символов"
             id="password"
+            labelFor="passwprd"
+            labelText="Пароль"
             className={cn(styles.input, {
               [styles.errorInput]: errors.password,
             })}
             {...register("password")}
-          >
-            <label htmlFor="password" className={styles.label}>
-              Пароль
-            </label>
-          </Input>
+          />
           {errors.password && (
             <span className={styles.error}>{errors.password.message}</span>
           )}

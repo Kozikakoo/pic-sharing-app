@@ -7,7 +7,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "@/lib/schemes";
 import { z } from "zod";
 import cn from "classnames";
-import { useEffect } from "react";
 
 type FormFields = z.infer<typeof registerSchema>;
 
@@ -40,15 +39,13 @@ const FormSignUp = () => {
           type="text"
           placeholder="Анастасия"
           id="name"
+          labelFor="name"
+          labelText="Имя"
           className={cn(styles.input, {
             [styles.errorInput]: errors.name,
           })}
           {...register("name")}
-        >
-          <label htmlFor="name" className={styles.label}>
-            Имя
-          </label>
-        </Input>
+        />
         {errors.name && (
           <span className={styles.error}>{errors.name.message}</span>
         )}
@@ -60,15 +57,13 @@ const FormSignUp = () => {
           type="email"
           placeholder="example@yandex.ru"
           id="email"
+          labelFor="email"
+          labelText="Почта"
           className={cn(styles.input, {
             [styles.errorInput]: errors.email,
           })}
           {...register("email")}
-        >
-          <label htmlFor="email" className={styles.label}>
-            Почта
-          </label>
-        </Input>
+        />
         {errors.email && (
           <span className={styles.error}>{errors.email.message}</span>
         )}
@@ -80,15 +75,13 @@ const FormSignUp = () => {
           type="password"
           placeholder="Не менее 6 символов"
           id="password"
+          labelFor="password"
+          labelText="Пароль"
           className={cn(styles.input, {
             [styles.errorInput]: errors.password,
           })}
           {...register("password")}
-        >
-          <label htmlFor="password" className={styles.label}>
-            Пароль
-          </label>
-        </Input>
+        />
         {errors.password && (
           <span className={styles.error}>{errors.password.message}</span>
         )}
@@ -99,15 +92,13 @@ const FormSignUp = () => {
           type="password"
           placeholder="Не менее 6 символов"
           id="confirmPassword"
+          labelFor="confirmPassword"
+          labelText="Подтвердите пароль"
           className={cn(styles.input, {
             [styles.errorInput]: errors.confirmPassword,
           })}
           {...register("confirmPassword")}
-        >
-          <label htmlFor="confirmPassword" className={styles.label}>
-            Подтвердите пароль
-          </label>
-        </Input>
+        />
         {errors.confirmPassword && (
           <span className={styles.error}>{errors.confirmPassword.message}</span>
         )}

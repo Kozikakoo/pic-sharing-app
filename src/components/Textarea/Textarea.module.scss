@@ -1,0 +1,19 @@
+@import "../../styles/utils/variables";
+
+.label {
+  font-size: 1.3rem;
+  margin-bottom: 0.4rem;
+  display: inline-block;
+}
+
+.textarea {
+  font-family: inherit;
+  height: 9rem;
+  padding: 1rem;
+  border-radius: 5px;
+
+  &:focus {
+    outline: $primary-color 3px solid;
+    border: none;
+  }
+}

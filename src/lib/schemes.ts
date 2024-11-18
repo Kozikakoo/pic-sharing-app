@@ -32,7 +32,7 @@ export const registerSchema = z
     path: ["confirmPassword"],
   });
 
-export const editSchema = z.object({
+export const editProfileSchema = z.object({
   name: z
     .string()
     .min(1, { message: "Укажите своё имя" })

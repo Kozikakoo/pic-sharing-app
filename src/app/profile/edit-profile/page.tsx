@@ -1,10 +1,10 @@
 import styles from "../../page.module.scss";
-import Edit from "@/components/Edit/Edit";
+import EditProfile from "@/components/EditProfile/EditProfile";
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <Edit />
+      <EditProfile />
     </main>
   );
 }

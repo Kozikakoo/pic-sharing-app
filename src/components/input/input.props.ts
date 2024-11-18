@@ -5,6 +5,9 @@ export interface InputProps
     InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {
-  children?: ReactNode;
+  classNameLabel?: string;
+  labelFor: string;
+  labelText: string;
   placeholder?: string;
+  children?: ReactNode;
 }
