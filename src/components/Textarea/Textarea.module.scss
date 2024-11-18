@@ -6,6 +6,11 @@
   display: inline-block;
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .textarea {
   font-family: inherit;
   height: 9rem;

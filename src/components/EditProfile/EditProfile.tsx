@@ -69,16 +69,14 @@ const EditProfile = () => {
             {...register("lastname")}
           />
         </div>
-        <div className={styles.columnBox}>
-          <Textarea
-            {...register("description")}
-            id="description"
-            name="description"
-            placeholder="Расскажите о себе"
-            labelFor="description"
-            labelText="Описание"
-          />
-        </div>
+        <Textarea
+          {...register("description")}
+          id="description"
+          name="description"
+          placeholder="Расскажите о себе"
+          labelFor="description"
+          labelText="Описание"
+        />
         <Input
           {...register("username")}
           className={cn({ [styles.errorInput]: errors.username })}

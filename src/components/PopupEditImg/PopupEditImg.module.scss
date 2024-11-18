@@ -1,8 +1,50 @@
 .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.wrapperImg {
   position: relative;
   border: 1px solid black;
   border-radius: 8px;
-  width: 25rem;
-  height: 17rem;
+  width: 45%;
+  height: 28rem;
   overflow: hidden;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 50%;
+
+  .title {
+    text-align: left;
+  }
+}
+
+.btnsBlock {
+  display: flex;
+  justify-content: space-around;
+}
+
+.tags {
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.tag {
+  background-color: rgb(250, 230, 202);
+  border: none;
+  border-radius: 25px;
+  width: max-content;
+  padding: 0.4rem 1rem;
+  font-size: 1.1rem;
+  margin: 0.3rem;
+
+  &:hover {
+    cursor: pointer;
+  }
 }

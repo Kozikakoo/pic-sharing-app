@@ -14,6 +14,7 @@ const Button = ({
         [styles.orange]: color == "orange",
         [styles.white]: color == "white",
         [styles.blue]: color == "blue",
+        [styles.red]: color == "red",
       })}
       {...props}
     >

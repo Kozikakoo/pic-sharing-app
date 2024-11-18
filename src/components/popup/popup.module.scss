@@ -13,18 +13,6 @@
   gap: 50px;
   box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
 
-  .popupDeleteImg {
-    flex-direction: column;
-    align-items: center;
-    width: 30%;
-  }
-
-  .popupEditImg {
-    flex-direction: row;
-    align-items: center;
-    width: 40%;
-  }
-
   h1 {
     text-align: center;
     font-size: 25px;
@@ -41,4 +29,17 @@
       color: darken($text-color, 50%);
     }
   }
+}
+
+.popupDeleteImg {
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+}
+
+.popupEditImg {
+  flex-direction: row;
+  align-items: center;
+  width: 60%;
+  background-color: $background-color;
 }
